@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_sign_in_Password_textEdit"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Password"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/business_sign_in_UserName_textEdit"
+        app:layout_constraintVertical_bias="0.152" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_sign_in_UserName_textEdit"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="User Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="372dp"
+        android:layout_height="49dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Login ~ Business Account"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <Button
+        android:id="@+id/business_sign_in_enter_bttn"
+        android:layout_width="114dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="92dp"
+        android:text="Enter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/business_sign_in_Password_textEdit"
+        app:layout_constraintVertical_bias="0.872" />
+
+    <Button
+        android:id="@+id/business_sign_in_noAccount_bttn"
+        android:layout_width="332dp"
+        android:layout_height="48dp"
+        android:hapticFeedbackEnabled="false"
+        android:text="Dont have an account? Press here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/business_sign_in_enter_bttn"
+        app:layout_constraintVertical_bias="0.565"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

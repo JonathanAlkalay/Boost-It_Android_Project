@@ -13,7 +13,7 @@ public class User_Account extends Account{
     }
 
     public User_Account(String firstName, String lastName, String phoneNumber, String email, Boolean loggedIn, List<post> savedPosts) {
-        super(firstName, lastName, phoneNumber, email, loggedIn);
+        super(firstName, lastName, phoneNumber, email);
         this.savedPosts = savedPosts;
     }
 

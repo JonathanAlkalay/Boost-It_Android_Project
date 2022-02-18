@@ -6,14 +6,13 @@ public class Account {
     private String lastName;
     private String phoneNumber;
     private String email;
-    private Boolean loggedIn;
+    private Boolean loggedIn = false;
 
-    public Account(String firstName, String lastName, String phoneNumber, String email, Boolean loggedIn) {
+    public Account(String firstName, String lastName, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.loggedIn = loggedIn;
     }
 
     public Account(){}

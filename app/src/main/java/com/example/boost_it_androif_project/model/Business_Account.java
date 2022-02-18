@@ -20,7 +20,7 @@ public class Business_Account extends Account{
 
     public Business_Account(String firstName, String lastName, String phoneNumber, String email, Boolean loggedIn, String aboutMe,
                             String address, List<post> activePosts, List<post> historyPosts) {
-        super(firstName, lastName, phoneNumber, email, loggedIn);
+        super(firstName, lastName, phoneNumber, email);
         this.aboutMe = aboutMe;
         this.address = address;
         this.activePosts = activePosts;
