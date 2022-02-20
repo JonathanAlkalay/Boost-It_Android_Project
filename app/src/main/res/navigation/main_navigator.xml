@@ -1,6 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_navigator">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigator"
+    app:startDestination="@id/welcome_screen">
 
+    <fragment
+        android:id="@+id/welcome_screen"
+        android:name="com.example.boost_it_androif_project.welcome_screen"
+        android:label="welcome_screen_fragment"
+        tools:layout="@layout/welcome_screen" >
+        <action
+            android:id="@+id/action_welcome_screen_to_user_sign_in2"
+            app:destination="@id/user_sign_in2" />
+        <action
+            android:id="@+id/action_welcome_screen_to_business_sign_in"
+            app:destination="@id/business_sign_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_sign_in2"
+        android:name="com.example.boost_it_androif_project.User.user_sign_in"
+        android:label="user_sign_in"
+        tools:layout="@layout/user_sign_in">
+        <action
+            android:id="@+id/action_user_sign_in2_to_user_registration"
+            app:destination="@id/user_registration" />
+        <action
+            android:id="@+id/action_user_sign_in2_to_user_home_page"
+            app:destination="@id/user_home_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/business_sign_in"
+        android:name="com.example.boost_it_androif_project.Business.business_sign_in"
+        android:label="business_sign_in"
+        tools:layout="@layout/business_sign_in">
+        <action
+            android:id="@+id/action_business_sign_in_to_business_registration_page"
+            app:destination="@id/business_registration_page" />
+        <action
+            android:id="@+id/action_business_sign_in_to_business_home_page"
+            app:destination="@id/business_home_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_registration"
+        android:name="com.example.boost_it_androif_project.User.user_registration"
+        android:label="user_registration"
+        tools:layout="@layout/user_registration_page"
+        />
+    <fragment
+        android:id="@+id/business_registration_page"
+        android:name="com.example.boost_it_androif_project.Business.business_registration_page"
+        android:label="business_registration_page"
+        tools:layout="@layout/business_registration_page"/>
+    <fragment
+        android:id="@+id/user_home_page"
+        android:name="com.example.boost_it_androif_project.User.user_home_page"
+        android:label="user_home_page"
+        tools:layout="@layout/user_home_page">
+        <action
+            android:id="@+id/action_user_home_page_to_user_account_info"
+            app:destination="@id/user_account_info" />
+        <action
+            android:id="@+id/action_user_home_page_to_user_available_ads"
+            app:destination="@id/user_available_ads" />
+        <action
+            android:id="@+id/action_user_home_page_to_user_saved_ads"
+            app:destination="@id/user_saved_ads" />
+    </fragment>
+    <fragment
+        android:id="@+id/business_home_page"
+        android:name="com.example.boost_it_androif_project.Business.business_home_page"
+        android:label="business_home_page"
+        tools:layout="@layout/business_home_page">
+        <action
+            android:id="@+id/action_business_home_page_to_business_account_info"
+            app:destination="@id/business_account_info" />
+        <action
+            android:id="@+id/action_business_home_page_to_business_active_posts"
+            app:destination="@id/business_active_posts" />
+        <action
+            android:id="@+id/action_business_home_page_to_business_historic_posts"
+            app:destination="@id/business_historic_posts" />
+        <action
+            android:id="@+id/action_business_home_page_to_business_post_new_add"
+            app:destination="@id/business_post_new_add" />
+    </fragment>
+    <fragment
+        android:id="@+id/business_account_info"
+        android:name="com.example.boost_it_androif_project.Business.business_account_info"
+        android:label="business_account_info"
+        tools:layout="@layout/business_account_info"/>
+    <fragment
+        android:id="@+id/user_account_info"
+        android:name="com.example.boost_it_androif_project.User.user_account_info"
+        android:label="user_account_info"
+        tools:layout="@layout/user_account_info"/>
+    <fragment
+        android:id="@+id/user_available_ads"
+        android:name="com.example.boost_it_androif_project.User.user_available_ads"
+        android:label="user_available_ads"
+        tools:layout="@layout/user_available_ads"/>
+    <fragment
+        android:id="@+id/user_saved_ads"
+        android:name="com.example.boost_it_androif_project.User.user_saved_ads"
+        android:label="user_saved_ads"
+        tools:layout="@layout/user_saved_ads"/>
+    <fragment
+        android:id="@+id/business_active_posts"
+        android:name="com.example.boost_it_androif_project.Business.business_active_posts"
+        android:label="business_active_posts"
+        tools:layout="@layout/business_active_posts"/>
+    <fragment
+        android:id="@+id/business_historic_posts"
+        android:name="com.example.boost_it_androif_project.Business.business_historic_posts"
+        android:label="business_historic_posts"
+        tools:layout="@layout/business_historic_posts"/>
+    <fragment
+        android:id="@+id/business_post_new_add"
+        android:name="com.example.boost_it_androif_project.Business.business_post_new_add"
+        android:label="business_post_new_add"
+        tools:layout="@layout/business_post_new_add"/>
 </navigation>
