@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "125621373624",
+    "project_id": "boost-it-android",
+    "storage_bucket": "boost-it-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125621373624:android:736788e19071749fec824d",
+        "android_client_info": {
+          "package_name": "com.example.boost_it_androif_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125621373624-rogeoufub6jne2md1r9mr5th3u3t9rss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQHrionQlMQ-f-sLNiZsrVra0iuRwhCic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125621373624-rogeoufub6jne2md1r9mr5th3u3t9rss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
