@@ -1,16 +1,28 @@
 package com.example.boost_it_androif_project.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Entity
 public class post {
+
+    public static final String collectionName = "posts";
+
+    @PrimaryKey
+    @NonNull
+    private Business_Account account;
 
     private String title;
     private String description;
     private String price;
     private String times;
     private String image;
-    private Business_Account account;
     private List<User_Account> users;
 
 
@@ -72,5 +84,36 @@ public class post {
 
     public void setTimes(String times) {
         this.times = times;
+    }
+
+    public Map<String, Object> toJson(post post) {
+
+        Map<String, Object> postJson = new HashMap<>();
+
+        postJson.put("BusinessAccount", post.account);
+        postJson.put("title", post.title);
+        postJson.put("description", post.description);
+        postJson.put("price", post.price);
+        postJson.put("times", post.times);
+        postJson.put("image", post.image);
+        postJson.put("users", post.users);
+
+        return postJson;
+    }
+
+    public post PostfromJson(Map<String, Object> json){
+
+        Business_Account BusinessAccount = (Business_Account) json.get("BusinessAccount");
+        String title = (String) json.get("title");
+        String description = (String) json.get("description");
+        String price = (String) json.get("price");
+        String times = (String) json.get("times");
+        String image = (String) json.get("image");
+        List<User_Account> users = (List<User_Account>) json.get("users");
+
+        post post = new post(title,description,price,times,image,BusinessAccount);
+        post.users = users;
+
+        return post;
     }
 }
