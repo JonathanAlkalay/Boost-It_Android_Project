@@ -59,6 +59,8 @@ public class user_sign_in extends Fragment {
                     toast.show();
                 }else {
                     if (userCheck.getPassWord().equals(pssWord)){
+                        email.setText("");
+                        passWord.setText("");
                         Navigation.findNavController(v).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(mail));
 
                     }else {

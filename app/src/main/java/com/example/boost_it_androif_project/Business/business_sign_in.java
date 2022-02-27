@@ -60,6 +60,9 @@ public class business_sign_in extends Fragment {
                     toast.show();
                 }else {
                     if (businessCheck.getPassWord().equals(pssWord)){
+
+                        email.setText("");
+                        passWord.setText("");
                         Navigation.findNavController(v).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(mail));
 
                     }else {

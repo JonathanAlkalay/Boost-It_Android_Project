@@ -2,6 +2,7 @@ package com.example.boost_it_androif_project.User;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,14 +26,14 @@ public class user_home_page extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.user_home_page, container, false);
+        View view =  inflater.inflate(R.layout.user_home_page, container, false);
+
+        return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
         mViewModel = new ViewModelProvider(this).get(UserHomePageViewModel.class);
-        // TODO: Use the ViewModel
     }
-
 }
