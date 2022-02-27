@@ -1,5 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_confirmPassword_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Confirm Password"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.914" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_email_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Company @Email"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.725" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_PickPassword_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Pick a password"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.82" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_address_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Company Address"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.632" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_phoneNumber_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Company phone number"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.539" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_companyName_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Company Name"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.442" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_AccountLastName_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Account owner last name"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.342" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/business_account_info_AccountFirstName_textEdit"
+            android:layout_width="319dp"
+            android:layout_height="56dp"
+            android:hint="Account owner name"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.241" />
+
+        <TextView
+            android:id="@+id/business_account_info_textView4"
+            android:layout_width="285dp"
+            android:layout_height="77dp"
+            android:text="Create Business Account"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.024" />
+
+        <Button
+            android:id="@+id/business_account_info_confirm_bttn"
+            android:layout_width="170dp"
+            android:layout_height="35dp"
+            android:text="Confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.977" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_confirmPassword_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Confirm Password"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.914" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_email_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Company @Email"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_PickPassword_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Pick a password"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_address_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Company Address"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_phoneNumber_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Company phone number"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.539" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_companyName_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Company Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_AccountLastName_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Account owner last name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_registration_page_AccountFirstName_textEdit2"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        android:hint="Account owner name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="285dp"
+        android:layout_height="77dp"
+        android:text="Edit Business Account"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Button
+        android:id="@+id/business_registration_page_confirm_bttn2"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+</androidx.constraintlayout.widget.ConstraintLayout>
