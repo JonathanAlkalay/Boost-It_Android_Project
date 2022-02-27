@@ -20,16 +20,18 @@ public class User_Account{
 
     private String firstName;
     private String lastName;
+    private String passWord;
     private String phoneNumber;
     private Boolean loggedIn;
     private List<post> savedPosts;
 
-    public User_Account(String email, String firstName, String lastName, String phoneNumber,
+    public User_Account(String email, String firstName, String lastName,String passWord, String phoneNumber,
                         List<post> savedPosts) {
 
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.passWord = passWord;
         this.phoneNumber = phoneNumber;
         this.savedPosts = savedPosts;
         this.loggedIn = false;
@@ -40,6 +42,7 @@ public class User_Account{
         this.email = null;
         this.firstName = null;
         this.lastName = null;
+        this.passWord = null;
         this.phoneNumber = null;
         this.loggedIn = false;
         this.savedPosts = new ArrayList<>();
@@ -68,6 +71,10 @@ public class User_Account{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getPassWord() { return passWord; }
+
+    public void setPassWord(String passWord) { this.passWord = passWord; }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -100,6 +107,7 @@ public class User_Account{
         userJson.put("email", user.email);
         userJson.put("firstName", user.firstName);
         userJson.put("lastName", user.lastName);
+        userJson.put("passWord", user.passWord);
         userJson.put("phoneNumber", user.phoneNumber);
         userJson.put("loggedIn", user.loggedIn);
         userJson.put("savedPosts", user.savedPosts);
@@ -107,16 +115,21 @@ public class User_Account{
         return userJson;
     }
 
-    public User_Account UserfromJson(Map<String, Object> json){
+    public static User_Account UserfromJson(Map<String, Object> json){
+
+        if(json == null)
+            return null;
+
 
         String email = (String) json.get("email");
         String firstName = (String) json.get("firstName");
         String lastName = (String) json.get("lastName");
+        String passWord = (String) json.get("passWord");
         String phoneNumber = (String) json.get("phoneNumber");
         Boolean loggedIn = (Boolean) json.get("loggedIn");
         List<post> savedPosts = (List<post>) json.get("savedPosts");
 
-        User_Account user = new User_Account(email,firstName,lastName,phoneNumber,savedPosts);
+        User_Account user = new User_Account(email,firstName,lastName,passWord, phoneNumber,savedPosts);
         user.loggedIn = loggedIn;
 
         return user;

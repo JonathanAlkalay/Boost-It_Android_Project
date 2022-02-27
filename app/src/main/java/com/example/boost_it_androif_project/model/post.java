@@ -101,7 +101,10 @@ public class post {
         return postJson;
     }
 
-    public post PostfromJson(Map<String, Object> json){
+    public static post PostfromJson(Map<String, Object> json){
+
+        if (json == null)
+            return null;
 
         Business_Account BusinessAccount = (Business_Account) json.get("BusinessAccount");
         String title = (String) json.get("title");
