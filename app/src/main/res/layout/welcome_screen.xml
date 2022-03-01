@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.744" />
+        app:layout_constraintVertical_bias="0.715" />
 
     <Button
         android:id="@+id/welcome_screen_BusinessAccount_bttn"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <TextView
         android:id="@+id/textView3"

@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/ads_list_row.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/ads_list_row.xml" value="0.3134916980746948" />
         <entry key="app/src/main/res/layout/business_account_info.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_account_info_edit_screen_fragment.xml" value="0.411270911345655" />
         <entry key="app/src/main/res/layout/business_account_info_fragment.xml" value="0.2682291666666667" />
@@ -34,7 +34,7 @@
         <entry key="app/src/main/res/layout/user_saved_ads.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/user_saved_ads_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/user_sign_in.xml" value="0.3053466883937752" />
-        <entry key="app/src/main/res/layout/welcome_screen.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/welcome_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/welcome_screen_fragment.xml" value="0.2682291666666667" />
       </map>
     </option>

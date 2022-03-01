@@ -2,6 +2,7 @@ package com.example.boost_it_androif_project.User;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,10 +30,8 @@ public class user_saved_ads extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
         mViewModel = new ViewModelProvider(this).get(UserSavedAdsViewModel.class);
-        // TODO: Use the ViewModel
     }
-
 }
