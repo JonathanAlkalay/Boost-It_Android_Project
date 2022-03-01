@@ -32,13 +32,17 @@ public class user_home_page extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.user_home_page, container, false);
 
-        Button bttn = view.findViewById(R.id.user_home_page_Personal_zone_button);
-        bttn.setOnClickListener(v -> {
+        Button personal = view.findViewById(R.id.user_home_page_Personal_zone_button);
+        personal.setOnClickListener(v -> {
 
             Navigation.findNavController(v).navigate(user_home_pageDirections.actionUserHomePageToUserAccountInfo(
                     user_home_pageArgs.fromBundle(getArguments()).getUserAccountEmail()));
         });
 
+        Button logOut = view.findViewById(R.id.user_home_page_Log_Out_button);
+        logOut.setOnClickListener(v->{
+            Navigation.findNavController(v).popBackStack();
+        });
         return view;
     }
 
