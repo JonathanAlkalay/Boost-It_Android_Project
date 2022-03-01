@@ -100,7 +100,15 @@
         android:id="@+id/user_account_info"
         android:name="com.example.boost_it_androif_project.User.user_account_info"
         android:label="user_account_info"
-        tools:layout="@layout/user_account_info"/>
+        tools:layout="@layout/user_account_info">
+        <argument
+            android:name="user_email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_user_account_info_to_user_account_info_edit"
+            app:destination="@id/user_account_info_edit"
+            app:popUpTo="@id/user_home_page" />
+    </fragment>
     <fragment
         android:id="@+id/user_available_ads"
         android:name="com.example.boost_it_androif_project.User.user_available_ads"
@@ -126,4 +134,25 @@
         android:name="com.example.boost_it_androif_project.Business.business_post_new_add"
         android:label="business_post_new_add"
         tools:layout="@layout/business_post_new_add"/>
+    <fragment
+        android:id="@+id/user_account_info_edit"
+        android:name="com.example.boost_it_androif_project.User.user_account_info_edit"
+        android:label="user_account_info_edit_fragment"
+        tools:layout="@layout/user_account_info_edit_fragment" >
+        <argument
+            android:name="user_email"
+            app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userLastName"
+            app:argType="string" />
+        <argument
+            android:name="userPhoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="userPassword"
+            app:argType="string" />
+    </fragment>
 </navigation>

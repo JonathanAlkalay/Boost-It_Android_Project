@@ -66,9 +66,12 @@ public class business_registration_page extends Fragment {
                     String compName = companyName.getText().toString();
                     String addrs = address.getText().toString();
                     String passWord = pickPssword.getText().toString();
+                    String confPass = confirmPsswrd.getText().toString();
                     String phnNum = phoneNumber.getText().toString();
 
-                    if (passWord.equals(confirmPsswrd.getText().toString())) {
+                    if (email!=null&&firstName!=null&&lstname!=null&&compName!=null&&addrs!=null&&passWord!=null&&
+                            confPass!=null&&phnNum!=null&& passWord.equals(confPass)) {
+
                         Business_Account business_account1 = new Business_Account(compName,null, addrs, email, firstName, lstname, passWord,phnNum);
 
                         Toast toast = Toast.makeText(getActivity(), "Added Account", Toast.LENGTH_LONG);
@@ -76,7 +79,7 @@ public class business_registration_page extends Fragment {
 
                         Model.instance.addBusiness(business_account1, () -> Navigation.findNavController(v).navigateUp());
                     }else {
-                        Toast toast = Toast.makeText(getActivity(), "PassWords don't match", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getActivity(), "PassWords don't match or missing fields", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

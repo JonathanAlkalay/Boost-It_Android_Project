@@ -14,14 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.boost_it_androif_project.R;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.User_Account;
-import com.example.boost_it_androif_project.model.post;
 
 import java.util.ArrayList;
 
@@ -39,17 +37,17 @@ public class user_registration extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.user_registration_page, container, false);
-        Button confirmRegistration = view.findViewById(R.id.user_registration_page_confirm_Bttn);
+        Button confirmRegistration = view.findViewById(R.id.user_account_info_edit_confirmBttn);
 
 
         confirmRegistration.setOnClickListener(v -> {
 
-            TextView eml = (TextView) view.findViewById(R.id.user_registration_page_Email_Edit_Text);
-            TextView name = (TextView) view.findViewById(R.id.user_registration_page_First_Name_Edit_Text);
-            TextView lastName = (TextView) view.findViewById(R.id.user_registration_page_Last_Name_Edit_Text);
-            TextView pickPssword = (TextView) view.findViewById(R.id.user_registration_page_Pick_Password_Edit_Text);
+            TextView eml = (TextView) view.findViewById(R.id.user_account_info_edit_email);
+            TextView name = (TextView) view.findViewById(R.id.user_account_info_edit_name);
+            TextView lastName = (TextView) view.findViewById(R.id.user_account_info_edit_lastName);
+            TextView pickPssword = (TextView) view.findViewById(R.id.user_account_info_edit_password);
             TextView confirmPsswrd = (TextView) view.findViewById(R.id.user_registration_page_Confirm_Password_Edit_Text);
-            TextView phoneNumber = (TextView) view.findViewById(R.id.user_registration_page_Phone_Number_Edit_Text);
+            TextView phoneNumber = (TextView) view.findViewById(R.id.user_account_info_edit_phoneNumber);
 
             Model.instance.getUserByEmail(eml.getText().toString(), user -> {
                 userCheck = user;
@@ -64,9 +62,11 @@ public class user_registration extends Fragment {
                     String firstName = name.getText().toString();
                     String lstname = lastName.getText().toString();
                     String passWord = pickPssword.getText().toString();
+                    String confPsswrd = confirmPsswrd.getText().toString();
                     String phnNum = phoneNumber.getText().toString();
 
-                    if (passWord.equals(confirmPsswrd.getText().toString())) {
+
+                    if ( email!=null && firstName!=null && lstname!=null && passWord!=null&&confPsswrd!=null&&phnNum!=null && passWord.equals(confPsswrd)) {
                         User_Account user_account = new User_Account(email, firstName, lstname, passWord, phnNum, new ArrayList<>());
 
                         Toast toast = Toast.makeText(getActivity(), "Added Account", Toast.LENGTH_LONG);
@@ -74,7 +74,7 @@ public class user_registration extends Fragment {
 
                         Model.instance.addUser(user_account, () -> Navigation.findNavController(v).navigateUp());
                     }else {
-                        Toast toast = Toast.makeText(getActivity(), "PassWords don't match", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getActivity(), "PassWords don't match or missing fields", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

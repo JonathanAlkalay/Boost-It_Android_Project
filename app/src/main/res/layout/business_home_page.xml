@@ -12,40 +12,28 @@
         tools:layout_editor_absoluteY="0dp">
 
         <Button
-            android:id="@+id/Business_home_page_Personal_zone_button"
-            android:layout_width="240dp"
-            android:layout_height="54dp"
-            android:text="Personal Zone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.215" />
-
-        <Button
-            android:id="@+id/Business_home_page_Post_Share_button"
+            android:id="@+id/business_home_page_Post_Share_button"
             android:layout_width="239dp"
             android:layout_height="52dp"
             android:text="Post/Share"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
+            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.331" />
+            app:layout_constraintVertical_bias="0.402" />
 
         <Button
-            android:id="@+id/Business_home_page_Available_Ads_button"
+            android:id="@+id/business_home_page_Active_Ads_button"
             android:layout_width="240dp"
             android:layout_height="48dp"
-            android:text="Available Ads"
+            android:text="Active Ads"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.443" />
+            app:layout_constraintVertical_bias="0.512" />
 
         <Button
             android:id="@+id/business_home_page_History_button"
@@ -54,22 +42,22 @@
             android:text="History"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintHorizontal_bias="0.538"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.554" />
+            app:layout_constraintVertical_bias="0.62" />
 
         <Button
             android:id="@+id/business_home_page_Business_Info_button2"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_width="239dp"
+            android:layout_height="47dp"
             android:text="Business Info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.543"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.674" />
+            app:layout_constraintVertical_bias="0.289" />
 
         <TextView
             android:id="@+id/Business_home_page_Home_Page_textView"

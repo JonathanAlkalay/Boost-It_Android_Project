@@ -2,11 +2,9 @@ package com.example.boost_it_androif_project.User;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.User_Account;
 
-public class UserAccountInfoViewModel extends ViewModel {
-
+public class UserAccountInfoEditViewModel extends ViewModel {
 
     public User_Account getUser() { return user; }
 
@@ -14,5 +12,4 @@ public class UserAccountInfoViewModel extends ViewModel {
         user = account;
     }
 
-    private User_Account user = null;
-}
+    private User_Account user = null;}

@@ -22,7 +22,8 @@
         <entry key="app/src/main/res/layout/registration_page_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_user.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/user_account_info.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/user_account_info.xml" value="0.20436968849282894" />
+        <entry key="app/src/main/res/layout/user_account_info_edit_fragment.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/user_account_info_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/user_available_ads.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/user_available_ads_fragment.xml" value="0.2682291666666667" />
