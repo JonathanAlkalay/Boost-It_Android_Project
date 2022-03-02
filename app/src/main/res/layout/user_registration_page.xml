@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/user_registration_page_confirm_Bttn"
+        android:id="@+id/user_account_info_edit_confirmBttn"
         android:layout_width="203dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.782" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_registration_page_Email_Edit_Text"
+        android:id="@+id/user_account_info_edit_email"
         android:layout_width="319dp"
         android:layout_height="56dp"
         android:hint="Email"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.594" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_registration_page_Pick_Password_Edit_Text"
+        android:id="@+id/user_account_info_edit_password"
         android:layout_width="319dp"
         android:layout_height="56dp"
         android:hint="Pick a password"
@@ -54,7 +54,7 @@
         app:layout_constraintVertical_bias="0.687" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_registration_page_Phone_Number_Edit_Text"
+        android:id="@+id/user_account_info_edit_phoneNumber"
         android:layout_width="319dp"
         android:layout_height="56dp"
         android:hint="Phone number"
@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_registration_page_Last_Name_Edit_Text"
+        android:id="@+id/user_account_info_edit_lastName"
         android:layout_width="319dp"
         android:layout_height="56dp"
         android:hint="Account owner last name"
@@ -78,7 +78,7 @@
         app:layout_constraintVertical_bias="0.401" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_registration_page_First_Name_Edit_Text"
+        android:id="@+id/user_account_info_edit_name"
         android:layout_width="319dp"
         android:layout_height="56dp"
         android:hint="Account owner name"

@@ -15,8 +15,9 @@
         <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_sign_in.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/welcome_screen.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/ads_list_row.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/ads_list_row.xml" value="0.3134916980746948" />
         <entry key="app/src/main/res/layout/business_account_info.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/business_account_info_edit_screen_fragment.xml" value="0.411270911345655" />
         <entry key="app/src/main/res/layout/business_account_info_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/business_active_posts.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_active_posts_fragment.xml" value="0.2682291666666667" />
@@ -33,7 +34,8 @@
         <entry key="app/src/main/res/layout/registration_page_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_user.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/user_account_info.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/user_account_info.xml" value="0.20436968849282894" />
+        <entry key="app/src/main/res/layout/user_account_info_edit_fragment.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/user_account_info_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/user_available_ads.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/user_available_ads_fragment.xml" value="0.2682291666666667" />
@@ -43,7 +45,7 @@
         <entry key="app/src/main/res/layout/user_saved_ads.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/user_saved_ads_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/user_sign_in.xml" value="0.3053466883937752" />
-        <entry key="app/src/main/res/layout/welcome_screen.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/welcome_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/welcome_screen_fragment.xml" value="0.2682291666666667" />
       </map>
     </option>
