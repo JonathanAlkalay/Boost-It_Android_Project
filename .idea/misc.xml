@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/layout/business_account_info.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_account_info_edit_screen_fragment.xml" value="0.411270911345655" />
         <entry key="app/src/main/res/layout/business_account_info_fragment.xml" value="0.2682291666666667" />
-        <entry key="app/src/main/res/layout/business_active_posts.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/business_active_posts.xml" value="0.335" />
         <entry key="app/src/main/res/layout/business_active_posts_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/business_historic_posts.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_historic_posts_fragment.xml" value="0.2682291666666667" />
@@ -40,9 +40,6 @@
         <entry key="app/src/main/res/layout/welcome_screen_fragment.xml" value="0.2682291666666667" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/user_account_info_edit_fragment 2.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
