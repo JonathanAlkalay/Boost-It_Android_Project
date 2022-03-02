@@ -21,11 +21,9 @@ public class Model {
     public static final Model instance = new Model();
 
     Executor threadPool = Executors.newFixedThreadPool(1);
-    Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
     ModelFireBase fireBase = new ModelFireBase();
 
     private Model(){}
-
 
 
     public interface AddUserListener{
@@ -62,52 +60,35 @@ public class Model {
         return null;
     }
 
-//    public List<User_Account> getAllUsers(){
-//        return AppLocalDB.db.user_account_dao().getAll();
-//    }
+    public interface AddPostListener{
+        void onComplete();
+    }
+    public void addPost(post post, AddPostListener listener){
+        fireBase.addPost(post, ()->{
+            listener.onComplete();
+        });
+    }
+
+    public interface getPostByIdListener{
+        void onComplete(post post);
+    }
+    public post getPostById(String id, getPostByIdListener listener){
+        fireBase.getPostById(id, listener);
+        return null;
+    }
+
+    MutableLiveData<List<post>> allPosts = new MutableLiveData<List<post>>();
+    public LiveData<List<post>> getAllPosts(){
+        if (allPosts.getValue() == null)
+            refreshAllPosts();
+
+        return allPosts;
+    }
+
+    public void refreshAllPosts() {
+
+//        fireBase.getAllPosts(){
 //
-//
-//    public User_Account getUserByEmail(String email){
-//          return AppLocalDB.db.user_account_dao().findByEmail(email);
-//    }
-//
-//    public void addUser(User_Account user){
-//        AppLocalDB.db.user_account_dao().insert(user);
-//    }
-//
-//    public void deleteUser(User_Account user){
-//        AppLocalDB.db.user_account_dao().delete(user);
-//    }
-//
-//    public List<Business_Account> getAllBusinesses(){
-//        return AppLocalDB.db.business_account_dao().getAll();
-//    }
-//
-//    public Business_Account getBusinessByEmail(String email){
-//        return AppLocalDB.db.business_account_dao().findByEmail(email);
-//    }
-//
-//    public void addBusiness(Business_Account business){
-//        AppLocalDB.db.business_account_dao().insert(business);
-//    }
-//
-//    public void deleteBusiness(Business_Account business){
-//        AppLocalDB.db.business_account_dao().delete(business);
-//    }
-//
-//    public List<post> getAllPosts(){
-//        return AppLocalDB.db.post_dao().getAll();
-//    }
-//
-//    public post getPostByBusiness(Business_Account business_account){
-//        return AppLocalDB.db.post_dao().findByBusiness(business_account);
-//    }
-//
-//    public void addPost(post post){
-//        AppLocalDB.db.post_dao().insert(post);
-//    }
-//
-//    public void deletePost(post post){
-//        AppLocalDB.db.post_dao().delete(post);
-//    }
+//        }
+    }
 }

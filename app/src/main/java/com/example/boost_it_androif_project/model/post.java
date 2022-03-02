@@ -14,16 +14,17 @@ public class post {
 
     public static final String collectionName = "posts";
 
+
     @PrimaryKey
     @NonNull
-    private Business_Account account;
+    private String key;
 
+    private Business_Account account;
     private String title;
     private String description;
     private String price;
     private String times;
     private String image;
-    private List<User_Account> users;
 
 
     public post(){};
@@ -35,16 +36,25 @@ public class post {
         this.times = times;
         this.image = image;
         this.account = acc;
-        this.users = new ArrayList<>();
+
+        this.key = title+description+price+times+acc.getCompanyName();
     }
+
+
+
+
+    public String generateKey(Business_Account acc){
+        return title+description+price+times+acc.getCompanyName();
+    }
+
+    @NonNull
+    public String getKey() { return key; }
+
+    public void setKey(@NonNull String key) { this.key = key; }
 
     public Business_Account getAccount() { return account; }
 
     public void setAccount(Business_Account account) { this.account = account; }
-
-    public List<User_Account> getUsers() { return users; }
-
-    public void setUsers(List<User_Account> users) { this.users = users; }
 
     public String getTitle() {
         return title;
@@ -96,12 +106,12 @@ public class post {
         postJson.put("price", post.price);
         postJson.put("times", post.times);
         postJson.put("image", post.image);
-        postJson.put("users", post.users);
+        postJson.put("key", post.key);
 
         return postJson;
     }
 
-    public static post PostfromJson(Map<String, Object> json){
+    public static post postfromJson(Map<String, Object> json){
 
         if (json == null)
             return null;
@@ -112,10 +122,10 @@ public class post {
         String price = (String) json.get("price");
         String times = (String) json.get("times");
         String image = (String) json.get("image");
-        List<User_Account> users = (List<User_Account>) json.get("users");
+        String key = (String) json.get("key");
 
         post post = new post(title,description,price,times,image,BusinessAccount);
-        post.users = users;
+        post.key = key;
 
         return post;
     }

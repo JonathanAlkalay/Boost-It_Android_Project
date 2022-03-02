@@ -19,11 +19,13 @@
         <entry key="app/src/main/res/layout/business_sign_in.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/home_page_business.xml" value="0.2451559240941228" />
         <entry key="app/src/main/res/layout/home_page_user.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/post_details.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/registration_page.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/registration_page_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_user.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/user_account_info.xml" value="0.20436968849282894" />
+        <entry key="app/src/main/res/layout/user_account_info_edit_fragment 2.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/layout/user_account_info_edit_fragment.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/user_account_info_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/user_available_ads.xml" value="0.37604166666666666" />
@@ -38,6 +40,9 @@
         <entry key="app/src/main/res/layout/welcome_screen_fragment.xml" value="0.2682291666666667" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/user_account_info_edit_fragment 2.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

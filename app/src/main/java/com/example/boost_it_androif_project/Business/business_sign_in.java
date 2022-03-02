@@ -52,27 +52,31 @@ public class business_sign_in extends Fragment {
             String mail = email.getText().toString();
             String pssWord = passWord.getText().toString();
 
-            Model.instance.getBusinessByEmail(mail, business_account -> {
-                businessCheck = business_account;
+            if (mail.equals("") || pssWord.equals("")){
+                Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
+                toast.show();
+            }else {
+                Model.instance.getBusinessByEmail(mail, business_account -> {
+                    businessCheck = business_account;
 
-                if (businessCheck == null) {
-                    Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
-                    toast.show();
-                }else {
-                    if (businessCheck.getPassWord().equals(pssWord)){
-
-                        email.setText("");
-                        passWord.setText("");
-                        Navigation.findNavController(v).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(mail));
-
-                    }else {
-                        Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
+                    if (businessCheck == null) {
+                        Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
                         toast.show();
-                    }
-                }
-            });
-        });
+                    } else {
+                        if (businessCheck.getPassWord().equals(pssWord)) {
 
+                            email.setText("");
+                            passWord.setText("");
+                            Navigation.findNavController(v).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(mail));
+
+                        } else {
+                            Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    }
+                });
+            }
+        });
 
         createAccountBttn.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(business_sign_inDirections.actionBusinessSignInToBusinessRegistrationPage()));

@@ -41,6 +41,18 @@ public class business_home_page extends Fragment {
         logOut.setOnClickListener(v->{
             Navigation.findNavController(v).popBackStack();
         });
+
+        Button activePosts = view.findViewById(R.id.business_home_page_Active_Ads_button);
+        activePosts.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(business_home_pageDirections.actionBusinessHomePageToBusinessActivePosts
+                    (business_home_pageArgs.fromBundle(getArguments()).getBusinessAccountEmail()));
+        });
+
+        Button post = view.findViewById(R.id.business_home_page_Post_Share_button);
+        post.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(business_home_pageDirections.actionBusinessHomePageToBusinessPostNewAdd
+                    (business_home_pageArgs.fromBundle(getArguments()).getBusinessAccountEmail()));
+        });
         return view;
     }
 
@@ -49,5 +61,4 @@ public class business_home_page extends Fragment {
         super.onAttach(context);
         mViewModel = new ViewModelProvider(this).get(BusinessHomePageViewModel.class);
     }
-
 }

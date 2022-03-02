@@ -51,24 +51,31 @@ public class user_sign_in extends Fragment {
             String mail = email.getText().toString();
             String pssWord = passWord.getText().toString();
 
-            Model.instance.getUserByEmail(mail, user_account -> {
-                userCheck = user_account;
+            if (mail.equals("") || pssWord.equals("")) {
 
-                if (userCheck == null) {
-                    Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
-                    toast.show();
-                }else {
-                    if (userCheck.getPassWord().equals(pssWord)){
-                        email.setText("");
-                        passWord.setText("");
-                        Navigation.findNavController(v).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(mail));
+                Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
+                toast.show();
+            }else{
 
-                    }else {
-                        Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
+                    Model.instance.getUserByEmail(mail, user_account -> {
+                        userCheck = user_account;
+
+                        if (userCheck == null) {
+                            Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
+                            toast.show();
+                        } else {
+                            if (userCheck.getPassWord().equals(pssWord)) {
+                                email.setText("");
+                                passWord.setText("");
+                                Navigation.findNavController(v).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(mail));
+
+                            } else {
+                                Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }
+                    });
                 }
-            });
         });
 
         createAccountBttn.setOnClickListener(v -> {

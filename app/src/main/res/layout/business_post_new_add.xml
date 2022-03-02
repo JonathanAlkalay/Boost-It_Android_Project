@@ -1,59 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/business_post_new_add_content_txt"
-        android:layout_width="260dp"
-        android:layout_height="71dp"
-        android:text="Content"
-        android:textSize="34sp"
+
+    <ImageView
+        android:id="@+id/business_post_new_add_image"
+        android:layout_width="289dp"
+        android:layout_height="183dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.029"
+        tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/business_post_new_add_title_txt2"
-        android:layout_width="260dp"
-        android:layout_height="71dp"
-        android:text="Title"
-        android:textSize="34sp"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_post_new_add_title"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:hint="Ad Title"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintVertical_bias="0.459" />
 
-    <EditText
-        android:id="@+id/business_post_new_add_content1_txt2"
-        android:layout_width="246dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="52dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_post_new_add_price"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:hint="$$Price$$"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/business_post_new_add_content_txt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662" />
 
-    <EditText
-        android:id="@+id/business_post_new_add_title1_txt2"
-        android:layout_width="246dp"
-        android:layout_height="103dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_post_new_add_hours"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:hint="Available between hour - hour"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562" />
+
+    <TextView
+        android:id="@+id/business_post_new_add_businessName"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/business_post_new_add_description"
+        android:layout_width="383dp"
+        android:layout_height="108dp"
+        android:hint="Write summary of your Ad description here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/business_post_new_add_title_txt2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.906" />
+
+    <Button
+        android:id="@+id/business_post_new_add_enter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995" />
 </androidx.constraintlayout.widget.ConstraintLayout>
