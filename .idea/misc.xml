@@ -3,17 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/business_account_info.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/business_home_page.xml" value="0.21" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/business_post_new_add.xml" value="0.17" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/business_registration_page.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/business_sign_in.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_account_info.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_home_page.xml" value="0.21" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_registration_page.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_saved_ads.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/user_sign_in.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/barak/StudioProjects/Boost-It_Android_Project/app/src/main/res/layout/welcome_screen.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/ads_list_row.xml" value="0.3134916980746948" />
         <entry key="app/src/main/res/layout/business_account_info.xml" value="0.37604166666666666" />
