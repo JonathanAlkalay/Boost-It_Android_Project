@@ -67,7 +67,7 @@ public class user_registration extends Fragment {
 
 
                     if ( email!=null && firstName!=null && lstname!=null && passWord!=null&&confPsswrd!=null&&phnNum!=null && passWord.equals(confPsswrd)) {
-                        User_Account user_account = new User_Account(email, firstName, lstname, passWord, phnNum, new ArrayList<>());
+                        User_Account user_account = new User_Account(email, firstName, lstname, passWord, phnNum);
 
                         Toast toast = Toast.makeText(getActivity(), "Added Account", Toast.LENGTH_LONG);
                         toast.show();

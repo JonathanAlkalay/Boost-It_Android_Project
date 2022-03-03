@@ -2,6 +2,7 @@ package com.example.boost_it_androif_project.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Business_Account{
     private List<post> activePosts;
     private List<post> historyPosts;
 
+    @Ignore
     public Business_Account(String companyName, String aboutMe, String address, String email, String firstName, String lastName,String passWord,
                             String phoneNumber) {
 

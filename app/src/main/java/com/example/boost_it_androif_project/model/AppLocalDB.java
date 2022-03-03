@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
-@Database(entities = {User_Account.class, Business_Account.class, post.class}, version = 3)
+@Database(entities = {User_Account.class, Business_Account.class, post.class}, version = 5)
 @TypeConverters({Converters.class})
 abstract class AppLocalDbRepository extends RoomDatabase{
     public abstract User_Account_DAO user_account_dao();

@@ -9,7 +9,7 @@ public class PostDetailsViewModel extends ViewModel {
 
     public post getPost() { return post; }
 
-    public void setPost(post post) { post = post; }
+    public void setPost(post post1) { post = post1; }
 
     private post post = null;
 }

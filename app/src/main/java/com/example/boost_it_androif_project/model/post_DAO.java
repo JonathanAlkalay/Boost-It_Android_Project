@@ -22,4 +22,5 @@ public interface post_DAO {
 
     @Delete
     void delete(post post);
+
 }

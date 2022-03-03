@@ -2,6 +2,7 @@ package com.example.boost_it_androif_project.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
@@ -23,19 +24,16 @@ public class User_Account{
     private String passWord;
     private String phoneNumber;
     private Boolean loggedIn;
-    private List<post> savedPosts;
 
-    public User_Account(String email, String firstName, String lastName,String passWord, String phoneNumber,
-                        List<post> savedPosts) {
+    @Ignore
+    public User_Account(String email, String firstName, String lastName,String passWord, String phoneNumber) {
 
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.passWord = passWord;
         this.phoneNumber = phoneNumber;
-        this.savedPosts = savedPosts;
         this.loggedIn = false;
-        this.savedPosts = new ArrayList<>();
     }
 
     public User_Account() {
@@ -45,7 +43,6 @@ public class User_Account{
         this.passWord = null;
         this.phoneNumber = null;
         this.loggedIn = false;
-        this.savedPosts = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -92,14 +89,6 @@ public class User_Account{
         this.loggedIn = loggedIn;
     }
 
-    public List<post> getSavedPosts() {
-        return savedPosts;
-    }
-
-    public void setSavedPosts(List<post> savedPosts) {
-        this.savedPosts = savedPosts;
-    }
-
     public Map<String, Object> toJson(User_Account user) {
 
         Map<String, Object> userJson = new HashMap<>();
@@ -110,7 +99,6 @@ public class User_Account{
         userJson.put("passWord", user.passWord);
         userJson.put("phoneNumber", user.phoneNumber);
         userJson.put("loggedIn", user.loggedIn);
-        userJson.put("savedPosts", user.savedPosts);
 
         return userJson;
     }
@@ -127,9 +115,8 @@ public class User_Account{
         String passWord = (String) json.get("passWord");
         String phoneNumber = (String) json.get("phoneNumber");
         Boolean loggedIn = (Boolean) json.get("loggedIn");
-        List<post> savedPosts = (List<post>) json.get("savedPosts");
 
-        User_Account user = new User_Account(email,firstName,lastName,passWord, phoneNumber,savedPosts);
+        User_Account user = new User_Account(email,firstName,lastName,passWord, phoneNumber);
         user.loggedIn = loggedIn;
 
         return user;

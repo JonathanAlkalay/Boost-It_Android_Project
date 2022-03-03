@@ -65,9 +65,6 @@
         <action
             android:id="@+id/action_user_home_page_to_user_available_ads"
             app:destination="@id/user_available_ads" />
-        <action
-            android:id="@+id/action_user_home_page_to_user_saved_ads"
-            app:destination="@id/user_saved_ads" />
         <argument
             android:name="user_account_email"
             app:argType="string" />
@@ -126,18 +123,6 @@
         tools:layout="@layout/user_available_ads">
         <action
             android:id="@+id/action_user_available_ads_to_post_details"
-            app:destination="@id/post_details" />
-    </fragment>
-    <fragment
-        android:id="@+id/user_saved_ads"
-        android:name="com.example.boost_it_androif_project.User.user_saved_ads"
-        android:label="user_saved_ads"
-        tools:layout="@layout/user_saved_ads">
-        <argument
-            android:name="user_email"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_user_saved_ads_to_post_details"
             app:destination="@id/post_details" />
     </fragment>
     <fragment

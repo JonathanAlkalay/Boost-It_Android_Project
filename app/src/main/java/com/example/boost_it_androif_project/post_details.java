@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.boost_it_androif_project.Business.BusinessAccountInfoViewModel;
@@ -55,7 +56,7 @@ public class post_details extends Fragment {
         TextView hours = view.findViewById(R.id.post_details_hours);
         TextView price = view.findViewById(R.id.post_details_price);
         TextView description = view.findViewById(R.id.post_details_description);
-        Text image = view.findViewById(R.id.post_details_image);
+        ImageView image = view.findViewById(R.id.post_details_image);
 
         companyName.setText(mViewModel.getPost().getAccount().getCompanyName());
         title.setText(mViewModel.getPost().getTitle());

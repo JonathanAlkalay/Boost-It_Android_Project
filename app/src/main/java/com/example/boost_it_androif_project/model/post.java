@@ -2,8 +2,13 @@ package com.example.boost_it_androif_project.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
+
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +32,12 @@ public class post {
     private String image;
 
 
+    private Long upDateDate = new Long(0);
+
+
     public post(){};
 
+    @Ignore
     public post(String title, String description, String price, String times, String image, Business_Account acc) {
         this.title = title;
         this.description = description;
@@ -39,8 +48,6 @@ public class post {
 
         this.key = title+description+price+times+acc.getCompanyName();
     }
-
-
 
 
     public String generateKey(Business_Account acc){
@@ -96,6 +103,12 @@ public class post {
         this.times = times;
     }
 
+    public Long getUpdateDate() { return this.upDateDate; }
+
+    public Long getUpDateDate() { return upDateDate; }
+
+    public void setUpDateDate(Long upDateDate) { this.upDateDate = upDateDate; }
+
     public Map<String, Object> toJson(post post) {
 
         Map<String, Object> postJson = new HashMap<>();
@@ -107,6 +120,7 @@ public class post {
         postJson.put("times", post.times);
         postJson.put("image", post.image);
         postJson.put("key", post.key);
+        postJson.put("updateDate", FieldValue.serverTimestamp());
 
         return postJson;
     }
@@ -116,17 +130,45 @@ public class post {
         if (json == null)
             return null;
 
-        Business_Account BusinessAccount = (Business_Account) json.get("BusinessAccount");
+        Business_Account business_account = BusinessFromHash((HashMap<String,Object>)json.get("BusinessAccount"));
         String title = (String) json.get("title");
         String description = (String) json.get("description");
         String price = (String) json.get("price");
         String times = (String) json.get("times");
         String image = (String) json.get("image");
         String key = (String) json.get("key");
+        Timestamp ts = (Timestamp)json.get("updateDate");
+        Long updateDate = ts.getSeconds();
 
-        post post = new post(title,description,price,times,image,BusinessAccount);
+        post post = new post(title,description,price,times,image,business_account);
+
+        post.upDateDate = updateDate;
         post.key = key;
 
         return post;
+    }
+
+    private static Business_Account BusinessFromHash(Map<String,Object> map){
+
+
+        String email = (String) map.get("email");
+        String companyName = (String) map.get("companyName");
+        String aboutMe = (String) map.get("aboutMe");
+        String address = (String) map.get("address");
+        String firstName = (String) map.get("firstName");
+        String lastName = (String) map.get("lastName");
+        String passWord = (String) map.get("passWord");
+        String phoneNumber = (String) map.get("phoneNumber");
+        Boolean loggedIn = (Boolean) map.get("loggedIn");
+        List<post> activePosts = (List<post>) map.get("activePosts");
+        List<post> historyPosts = (List<post>) map.get("historyPosts");
+
+        Business_Account business_account = new Business_Account( companyName,aboutMe,address,email,
+                firstName,lastName,passWord,phoneNumber);
+        business_account.setLoggedIn(loggedIn);
+        business_account.setActivePosts(activePosts);
+        business_account.setHistoryPosts(historyPosts);
+
+        return business_account;
     }
 }

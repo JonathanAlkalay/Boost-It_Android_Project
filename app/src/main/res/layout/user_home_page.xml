@@ -13,8 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_home_page_saved_ads_button"
-        app:layout_constraintVertical_bias="0.775" />
+        app:layout_constraintTop_toBottomOf="@+id/user_home_page_browseActiveAds_button"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/user_home_page_Home_Page_textView"
@@ -29,17 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.041" />
-
-    <Button
-        android:id="@+id/user_home_page_saved_ads_button"
-        android:layout_width="197dp"
-        android:layout_height="83dp"
-        android:text="Saved Ads"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
 
     <Button
         android:id="@+id/user_home_page_Personal_zone_button"
@@ -63,6 +52,6 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.555" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

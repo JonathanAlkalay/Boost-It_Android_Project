@@ -43,6 +43,11 @@ public class user_home_page extends Fragment {
         logOut.setOnClickListener(v->{
             Navigation.findNavController(v).popBackStack();
         });
+
+        Button allAds = view.findViewById(R.id.user_home_page_browseActiveAds_button);
+        allAds.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(user_home_pageDirections.actionUserHomePageToUserAvailableAds());
+        });
         return view;
     }
 
