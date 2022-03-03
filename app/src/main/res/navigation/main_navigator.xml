@@ -214,5 +214,8 @@
         <argument
             android:name="postId"
             app:argType="string" />
+        <argument
+            android:name="isBusiness"
+            app:argType="boolean" />
     </fragment>
 </navigation>

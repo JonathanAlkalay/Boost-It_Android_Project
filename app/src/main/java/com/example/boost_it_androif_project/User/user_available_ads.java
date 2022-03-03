@@ -54,7 +54,7 @@ public class user_available_ads extends Fragment {
         adapter.setOnItemClickListener((v, position) -> {
             String postId = mViewModel.getData().getValue().get(position).getKey();
             Navigation.findNavController(v).navigate(user_available_adsDirections.
-                    actionUserAvailableAdsToPostDetails(postId));
+                    actionUserAvailableAdsToPostDetails(postId, false));
         });
 
         mViewModel.getData().observe(getViewLifecycleOwner(), list1 -> refresh());
