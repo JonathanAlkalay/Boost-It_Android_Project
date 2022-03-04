@@ -61,6 +61,10 @@ public class Model {
         });
     }
 
+    public void UpdateBusiness(String busEmail, String updateField, Object updateValue){
+        fireBase.updateBusiness(busEmail, updateField, updateValue);
+    }
+
     public interface getBusinessByEmailListener{
         void onComplete(Business_Account business_account);
     }
@@ -108,8 +112,8 @@ public class Model {
 
                 for (post pst: list) {
                     AppLocalDB.db.post_dao().insert(pst);
-                    if (lud < pst.getUpdateDate())
-                        lud = pst.getUpdateDate();
+                    if (lud < pst.getUpDateDate())
+                        lud = pst.getUpDateDate();
                 }
                 MyApplication.getContext()
                         .getSharedPreferences("TAG",Context.MODE_PRIVATE)

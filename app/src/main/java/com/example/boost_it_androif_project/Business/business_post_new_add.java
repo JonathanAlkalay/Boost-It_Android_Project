@@ -80,16 +80,23 @@ public class business_post_new_add extends Fragment {
 
                 post post = new post();
 
-                post.setAccount(mViewModel.getAccount());
+                post.setBusinessEmail(mViewModel.getAccount().getEmail());
                 post.setTitle(ttle);
                 post.setPrice(prce);
                 post.setTimes(hrs);
                 post.setDescription(dscrptn);
                 post.setImage("no image");
-                post.setKey(post.generateKey(mViewModel.getAccount()));
+                post.setKey(post.generateKey(mViewModel.getAccount().getEmail()));
 
                 Toast toast = Toast.makeText(getActivity(), "Added Post", Toast.LENGTH_LONG);
                 toast.show();
+
+                //TODO change business account in post to email and add this new post to business active posts and historic
+                mViewModel.getAccount().getActivePosts().add(post);
+                mViewModel.getAccount().getHistoryPosts().add(post);
+
+                Model.instance.UpdateBusiness(mViewModel.getAccount().getEmail(),"activePosts", mViewModel.getAccount().getActivePosts());
+                Model.instance.UpdateBusiness(mViewModel.getAccount().getEmail(),"historyPosts", mViewModel.getAccount().getHistoryPosts());
 
                 Model.instance.addPost(post, () -> Navigation.findNavController(view).navigateUp());
             } else {

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.boost_it_androif_project.Business.BusinessAccountInfoViewModel;
 import com.example.boost_it_androif_project.User.user_account_infoArgs;
+import com.example.boost_it_androif_project.model.Business_Account;
 import com.example.boost_it_androif_project.model.Model;
 
 import org.w3c.dom.Text;
@@ -66,7 +67,9 @@ public class post_details extends Fragment {
             confirm.setVisibility(View.INVISIBLE);
         }
 
-        companyName.setText(mViewModel.getPost().getAccount().getCompanyName());
+        Model.instance.getBusinessByEmail(mViewModel.getPost().getBusinessEmail(), business_account
+                -> companyName.setText(business_account.getCompanyName()));
+
         title.setText(mViewModel.getPost().getTitle());
         hours.setText(mViewModel.getPost().getTimes());
         price.setText(mViewModel.getPost().getPrice());

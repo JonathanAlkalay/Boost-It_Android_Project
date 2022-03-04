@@ -16,7 +16,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,11 +33,13 @@ public class user_available_ads extends Fragment {
         return new user_available_ads();
     }
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.user_available_ads, container, false);
+
 
         swipeRefresh = view.findViewById(R.id.user_available_ads_swipe_refresh);
         swipeRefresh.setOnRefreshListener(()-> Model.instance.refreshAllPosts());
@@ -83,7 +84,7 @@ public class user_available_ads extends Fragment {
 
         public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
-            name = itemView.findViewById(R.id.ads_list_row_businessName);
+            name = itemView.findViewById(R.id.ads_list_row_title);
             hours = itemView.findViewById(R.id.ads_list_row_hours);
             price = itemView.findViewById(R.id.ads_list_row_discountPrice);
             image = itemView.findViewById(R.id.ads_list_row_image);
@@ -95,7 +96,7 @@ public class user_available_ads extends Fragment {
         }
 
         void bind(post post){
-            name.setText(post.getAccount().getCompanyName());
+            name.setText(post.getTitle());
             hours.setText(post.getTimes());
             price.setText(post.getPrice());
 

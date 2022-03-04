@@ -10,8 +10,10 @@ import java.util.List;
 
 public class UserSavedAdsViewModel extends ViewModel {
 
-    List<post> savedPosts;
+    public List<post> getSavedPosts() { return savedPosts; }
 
+    public void setSavedPosts(List<post> savedPosts) { this.savedPosts = savedPosts; }
 
+    private List<post> savedPosts = null;
 
 }

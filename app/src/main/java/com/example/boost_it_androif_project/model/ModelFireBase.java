@@ -82,6 +82,13 @@ public class ModelFireBase {
                 });
     }
 
+    public void updateBusiness(String email, String field ,Object value){
+
+        db.collection(Business_Account.collectionName)
+                .document(email)
+                .update(field,value);
+    }
+
     public void addPost(post post, Model.AddPostListener listener) {
 
         Map<String, Object> json = post.toJson(post);
@@ -90,7 +97,7 @@ public class ModelFireBase {
                 .document(post.getKey())
                 .set(json)
                 .addOnSuccessListener(unused -> listener.onComplete())
-                .addOnFailureListener(e -> listener.onComplete());
+                .addOnFailureListener(System.out::print);
     }
 
 

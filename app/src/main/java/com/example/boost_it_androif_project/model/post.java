@@ -9,6 +9,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FieldValue;
 
 import java.lang.reflect.Field;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,44 +25,35 @@ public class post {
     @NonNull
     private String key;
 
-    private Business_Account account;
+    private String businessEmail;
     private String title;
     private String description;
     private String price;
     private String times;
     private String image;
-
-
     private Long upDateDate = new Long(0);
 
 
     public post(){};
 
     @Ignore
-    public post(String title, String description, String price, String times, String image, Business_Account acc) {
+    public post(String title, String description, String price, String times, String image, String businessEmail) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.times = times;
         this.image = image;
-        this.account = acc;
-
-        this.key = title+description+price+times+acc.getCompanyName();
+        this.businessEmail = businessEmail;
+        this.key = title+description+price+times+businessEmail;
     }
 
 
-    public String generateKey(Business_Account acc){
-        return title+description+price+times+acc.getCompanyName();
-    }
+    public String generateKey(String businessEmail){ return title+description+price+times+businessEmail; }
 
     @NonNull
     public String getKey() { return key; }
 
     public void setKey(@NonNull String key) { this.key = key; }
-
-    public Business_Account getAccount() { return account; }
-
-    public void setAccount(Business_Account account) { this.account = account; }
 
     public String getTitle() {
         return title;
@@ -103,17 +95,19 @@ public class post {
         this.times = times;
     }
 
-    public Long getUpdateDate() { return this.upDateDate; }
-
     public Long getUpDateDate() { return upDateDate; }
 
     public void setUpDateDate(Long upDateDate) { this.upDateDate = upDateDate; }
+
+    public String getBusinessEmail() { return businessEmail; }
+
+    public void setBusinessEmail(String businessEmail) { this.businessEmail = businessEmail; }
 
     public Map<String, Object> toJson(post post) {
 
         Map<String, Object> postJson = new HashMap<>();
 
-        postJson.put("BusinessAccount", post.account);
+        postJson.put("BusinessEmail", post.businessEmail);
         postJson.put("title", post.title);
         postJson.put("description", post.description);
         postJson.put("price", post.price);
@@ -130,7 +124,7 @@ public class post {
         if (json == null)
             return null;
 
-        Business_Account business_account = BusinessFromHash((HashMap<String,Object>)json.get("BusinessAccount"));
+        String businessEmail = (String)json.get("BusinessEmail");
         String title = (String) json.get("title");
         String description = (String) json.get("description");
         String price = (String) json.get("price");
@@ -140,7 +134,7 @@ public class post {
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
-        post post = new post(title,description,price,times,image,business_account);
+        post post = new post(title,description,price,times,image,businessEmail);
 
         post.upDateDate = updateDate;
         post.key = key;
@@ -148,27 +142,27 @@ public class post {
         return post;
     }
 
-    private static Business_Account BusinessFromHash(Map<String,Object> map){
-
-
-        String email = (String) map.get("email");
-        String companyName = (String) map.get("companyName");
-        String aboutMe = (String) map.get("aboutMe");
-        String address = (String) map.get("address");
-        String firstName = (String) map.get("firstName");
-        String lastName = (String) map.get("lastName");
-        String passWord = (String) map.get("passWord");
-        String phoneNumber = (String) map.get("phoneNumber");
-        Boolean loggedIn = (Boolean) map.get("loggedIn");
-        List<post> activePosts = (List<post>) map.get("activePosts");
-        List<post> historyPosts = (List<post>) map.get("historyPosts");
-
-        Business_Account business_account = new Business_Account( companyName,aboutMe,address,email,
-                firstName,lastName,passWord,phoneNumber);
-        business_account.setLoggedIn(loggedIn);
-        business_account.setActivePosts(activePosts);
-        business_account.setHistoryPosts(historyPosts);
-
-        return business_account;
-    }
+//    private static Business_Account BusinessFromHash(Map<String,Object> map){
+//
+//
+//        String email = (String) map.get("email");
+//        String companyName = (String) map.get("companyName");
+//        String aboutMe = (String) map.get("aboutMe");
+//        String address = (String) map.get("address");
+//        String firstName = (String) map.get("firstName");
+//        String lastName = (String) map.get("lastName");
+//        String passWord = (String) map.get("passWord");
+//        String phoneNumber = (String) map.get("phoneNumber");
+//        Boolean loggedIn = (Boolean) map.get("loggedIn");
+//        List<post> activePosts = (List<post>) map.get("activePosts");
+//        List<post> historyPosts = (List<post>) map.get("historyPosts");
+//
+//        Business_Account business_account = new Business_Account( companyName,aboutMe,address,email,
+//                firstName,lastName,passWord,phoneNumber);
+//        business_account.setLoggedIn(loggedIn);
+//        business_account.setActivePosts(activePosts);
+//        business_account.setHistoryPosts(historyPosts);
+//
+//        return business_account;
+//    }
 }

@@ -73,8 +73,8 @@ public class business_account_info_editScreen extends Fragment {
             String descr = description.getText().toString();
 
 
-            if ( firstName!=null && lstname!=null && passWord!=null&&phnNum!=null&&compName!=null
-                    &&addrs!=null&&psswrd!=null&&descr!=null ) {
+            if ( !firstName.equals("") && !lstname.equals("") && !passWord.equals("")&&!phnNum.equals("")&&!compName.equals("")
+                    &&!addrs.equals("")&&!psswrd.equals("")&&!descr.equals("") ) {
 
                 Toast toast = Toast.makeText(getActivity(), "Updated Account", Toast.LENGTH_LONG);
                 toast.show();

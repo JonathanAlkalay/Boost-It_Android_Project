@@ -18,7 +18,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/ads_list_row_businessName"
+        android:id="@+id/ads_list_row_title"
         android:layout_width="232dp"
         android:layout_height="33dp"
         android:text="TextView"

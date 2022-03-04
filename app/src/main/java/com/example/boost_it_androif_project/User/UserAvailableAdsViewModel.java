@@ -9,13 +9,9 @@ import com.example.boost_it_androif_project.model.post;
 import java.util.List;
 
 public class UserAvailableAdsViewModel extends ViewModel {
-
     LiveData<List<post>> data;
 
-    public UserAvailableAdsViewModel(){
-        data = Model.instance.getAllPosts();
-    }
-    public LiveData<List<post>> getData() {
-        return data;
-    }
+    public UserAvailableAdsViewModel(){ data = Model.instance.getAllPosts();}
+    public LiveData<List<post>> getData() { return data; }
+
 }
