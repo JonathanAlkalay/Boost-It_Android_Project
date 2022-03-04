@@ -100,6 +100,7 @@ public class Model {
         return allPosts;
     }
 
+
     public void refreshAllPosts() {
         postsIsLoaded.setValue(allPostListLoadingState.loading);
 

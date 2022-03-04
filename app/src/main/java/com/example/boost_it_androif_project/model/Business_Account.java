@@ -28,7 +28,6 @@ public class Business_Account{
     private String phoneNumber;
     private Boolean loggedIn;
     private List<post> activePosts;
-    private List<post> historyPosts;
 
     @Ignore
     public Business_Account(String companyName, String aboutMe, String address, String email, String firstName, String lastName,String passWord,
@@ -43,7 +42,6 @@ public class Business_Account{
         this.passWord = passWord;
         this.phoneNumber = phoneNumber;
         this.activePosts = new ArrayList<>();
-        this.historyPosts = new ArrayList<>();
         this.loggedIn = false;
     }
 
@@ -58,7 +56,6 @@ public class Business_Account{
         this.phoneNumber = null;
         this.loggedIn = false;
         this.activePosts = new ArrayList<>();
-        this.historyPosts = new ArrayList<>();
     }
 
     public String getCompanyName() { return companyName; }
@@ -133,14 +130,6 @@ public class Business_Account{
         this.activePosts = activePosts;
     }
 
-    public List<post> getHistoryPosts() {
-        return historyPosts;
-    }
-
-    public void setHistoryPosts(List<post> historyPosts) {
-        this.historyPosts = historyPosts;
-    }
-
     public Map<String, Object> toJson(Business_Account business_account) {
 
         Map<String, Object> businessJson = new HashMap<>();
@@ -155,7 +144,6 @@ public class Business_Account{
         businessJson.put("phoneNumber", business_account.phoneNumber);
         businessJson.put("loggedIn", business_account.loggedIn);
         businessJson.put("activePosts", business_account.activePosts);
-        businessJson.put("historyPosts", business_account.historyPosts);
 
         return businessJson;
     }
@@ -175,8 +163,6 @@ public class Business_Account{
         String phoneNumber = (String) json.get("phoneNumber");
         Boolean loggedIn = (Boolean) json.get("loggedIn");
         List<post> activePosts = (List<post>) json.get("activePosts");
-        List<post> historyPosts = (List<post>) json.get("historyPosts");
-
 
 
         Business_Account business_account = new Business_Account(companyName,aboutMe,address,email,firstName,
@@ -184,7 +170,6 @@ public class Business_Account{
 
         business_account.loggedIn = loggedIn;
         business_account.activePosts = activePosts;
-        business_account.historyPosts = historyPosts;
 
         return business_account;
     }

@@ -14,8 +14,11 @@ public interface post_DAO {
     @Query("select * from post")
     List<post> getAll();
 
-    @Query("select * from post where key = :id")
-    post findByBusinessEmail(String id);
+    @Query("select * from post where businessEmail = :email")
+    List<post> getPostsFromBusiness(String email);
+
+//    @Query("select * from post where key = :id")
+//    List<post> findByBusinessEmail(String id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(post post);

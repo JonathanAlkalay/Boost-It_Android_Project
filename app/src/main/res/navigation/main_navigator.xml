@@ -81,9 +81,6 @@
             android:id="@+id/action_business_home_page_to_business_active_posts"
             app:destination="@id/business_active_posts" />
         <action
-            android:id="@+id/action_business_home_page_to_business_historic_posts"
-            app:destination="@id/business_historic_posts" />
-        <action
             android:id="@+id/action_business_home_page_to_business_post_new_add"
             app:destination="@id/business_post_new_add" />
         <argument
@@ -136,15 +133,6 @@
         <argument
             android:name="business_email"
             app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/business_historic_posts"
-        android:name="com.example.boost_it_androif_project.Business.business_historic_posts"
-        android:label="business_historic_posts"
-        tools:layout="@layout/business_historic_posts">
-        <action
-            android:id="@+id/action_business_historic_posts_to_post_details"
-            app:destination="@id/post_details" />
     </fragment>
     <fragment
         android:id="@+id/business_post_new_add"

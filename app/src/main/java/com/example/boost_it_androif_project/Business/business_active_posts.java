@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -19,15 +21,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.boost_it_androif_project.R;
+import com.example.boost_it_androif_project.User.user_available_ads;
+import com.example.boost_it_androif_project.User.user_available_adsDirections;
+import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.post;
 
 public class business_active_posts extends Fragment {
 
     private BusinessActivePostsViewModel mViewModel;
     View view;
-//    MyAdapter adapter;
+    MyAdapter adapter;
     SwipeRefreshLayout swipeRefresh;
 
+
+    //TODO only show ads that were posted by specific buisiness
+    //TODO allow business to post picture and alsop be able to view in user side and business
+    //TODO fix observer refresh when posting new add
 
     public static business_active_posts newInstance() {
         return new business_active_posts();
@@ -39,35 +48,106 @@ public class business_active_posts extends Fragment {
         this.view =  inflater.inflate(R.layout.business_active_posts, container, false);
 
         swipeRefresh = view.findViewById(R.id.businessActivePosts_swipeToRefresh);
-//        swipeRefresh.setOnRefreshListener(() -> Model.instance.refreshStudentList());
+        swipeRefresh.setOnRefreshListener(() -> Model.instance.refreshAllPosts());
 
 
         RecyclerView list = view.findViewById(R.id.business_activePosts_recyclerView);
         list.setHasFixedSize(true);
 
-//        list.setLayoutManager(new LinearLayoutManager(getContext()));
-//        adapter = new MyAdapter();
-//        list.setAdapter(adapter);
-//
-//        adapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int position) {
-//                String id = mViewModel.getPosts().
-//            }
-//        });
+        list.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new MyAdapter();
+        list.setAdapter(adapter);
 
+        adapter.setOnItemClickListener((v, position) -> {
+            String postId = mViewModel.getData().getValue().get(position).getKey();
+            Navigation.findNavController(v).navigate(business_active_postsDirections.
+                    actionBusinessActivePostsToPostDetails(postId,true));
+        });
 
-//        if (mViewModel.getPosts() == null){
-//            Model.instance.getBusinessByEmail(business_active_postsArgs.fromBundle(getArguments()).getBusinessEmail(), business -> {
-//
-//                mViewModel.setPosts(business.getActivePosts());
-//                setScreen();
-//            });
-//        }else {
-//            setScreen();
-//        }
+        mViewModel.getData().observe(getViewLifecycleOwner(), list1 -> refresh());
+        swipeRefresh.setRefreshing(Model.instance.getPostsIsLoaded().getValue() == Model.allPostListLoadingState.loading);
+        Model.instance.getPostsIsLoaded().observe(getViewLifecycleOwner(), postLoadingState -> {
+            if (postLoadingState == Model.allPostListLoadingState.loading){
+                swipeRefresh.setRefreshing(true);
+            }else{
+                swipeRefresh.setRefreshing(false);
+            }
+        });
 
         return this.view;
+    }
+    private void refresh() {
+        adapter.notifyDataSetChanged();
+        swipeRefresh.setRefreshing(false);
+    }
+
+    class MyViewHolder extends RecyclerView.ViewHolder{
+
+        ImageView image;
+        TextView name;
+        TextView hours;
+        TextView price;
+
+        public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
+            super(itemView);
+
+            name = itemView.findViewById(R.id.ads_list_row_title);
+            hours = itemView.findViewById(R.id.ads_list_row_hours);
+            price = itemView.findViewById(R.id.ads_list_row_discountPrice);
+            image = itemView.findViewById(R.id.ads_list_row_image);
+
+            itemView.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+                listener.onItemClick(v,pos);
+            });
+        }
+
+        void bind(post post){
+            name.setText(post.getTitle());
+            hours.setText(post.getTimes());
+            price.setText(post.getPrice());
+
+//            avatarImv.setImageResource(R.drawable.avatar);
+//            if (student.getAvatarUrl() != null) {
+//                Picasso.get()
+//                        .load(student.getAvatarUrl())
+//                        .into(avatarImv);
+//            }
+        }
+    }
+
+    interface OnItemClickListener{
+        void onItemClick(View v,int position);
+    }
+
+    class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
+
+        OnItemClickListener listener;
+        public void setOnItemClickListener(OnItemClickListener listener){
+            this.listener = listener;
+        }
+
+        @NonNull
+        @Override
+        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = getLayoutInflater().inflate(R.layout.ads_list_row,parent,false);
+            MyViewHolder holder = new MyViewHolder(view,listener);
+            return holder;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+            post post = mViewModel.getData().getValue().get(position);
+            holder.bind(post);
+        }
+
+        @Override
+        public int getItemCount() {
+            if(mViewModel.getData().getValue() == null){
+                return 0;
+            }
+            return mViewModel.getData().getValue().size();
+        }
     }
 
     @Override
@@ -75,6 +155,4 @@ public class business_active_posts extends Fragment {
         super.onAttach(context);
         mViewModel = new ViewModelProvider(this).get(BusinessActivePostsViewModel.class);
     }
-
-
 }
