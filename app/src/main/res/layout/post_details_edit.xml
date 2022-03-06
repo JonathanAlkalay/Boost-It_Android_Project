@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/post_details_edit_image"
+        android:layout_width="289dp"
+        android:layout_height="183dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        tools:src="@tools:sample/avatars" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/post_details_edit_title"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_image"
+        app:layout_constraintVertical_bias="0.237" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/post_details_edit_description"
+        android:layout_width="359dp"
+        android:layout_height="128dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_image"
+        app:layout_constraintVertical_bias="0.861" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/post_details_edit_price"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_image"
+        app:layout_constraintVertical_bias="0.554" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/post_details_edit_hours"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_image"
+        app:layout_constraintVertical_bias="0.397" />
+
+    <TextView
+        android:id="@+id/post_details_edit_businessName"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_image"
+        app:layout_constraintVertical_bias="0.088" />
+
+    <Button
+        android:id="@+id/post_details_edit_confirmBttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/post_details_edit_camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/post_details_edit_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <ImageButton
+        android:id="@+id/post_details_edit_gallery_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/post_details_edit_image"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_edit_camera_button"
+        app:layout_constraintVertical_bias="0.043" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
