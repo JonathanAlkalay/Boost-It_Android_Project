@@ -35,6 +35,7 @@ public class post_details_edit extends Fragment {
     private PostDetailsEditViewModel mViewModel;
     View view;
     Button confirm;
+    Button delete;
     TextView companyName;
     TextView title;
     TextView hours;
@@ -84,6 +85,7 @@ public class post_details_edit extends Fragment {
         image = view.findViewById(R.id.post_details_edit_image);
         camera = view.findViewById(R.id.post_details_edit_camera_button);
         gallery = view.findViewById(R.id.post_details_edit_gallery_button);
+        delete = view.findViewById(R.id.post_details_edit_delete_button);
 
         Model.instance.getBusinessByEmail(mViewModel.getPost().getBusinessEmail(), business_account
                 -> companyName.setText(business_account.getCompanyName()));
@@ -106,6 +108,12 @@ public class post_details_edit extends Fragment {
             Navigation.findNavController(v).navigateUp();
         });
 
+        //TODO complete, delete post with  in firebase and delete  post in DAO local db
+        delete.setOnClickListener(v -> {
+
+
+            Navigation.findNavController(v).popBackStack();
+        });
     }
 
 

@@ -36,7 +36,7 @@ public class business_active_posts extends Fragment {
 
 
     //TODO only show ads that were posted by specific business
-    //TODO add edit/delete for posts
+    //TODO add edit + delete for posts -> added todo on postDetails edit page
     //TODO fix observer refresh when posting new add
     //TODO fix gallery button not inserting picture
     //TODO add spinners when data is loading

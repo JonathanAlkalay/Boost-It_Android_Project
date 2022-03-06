@@ -213,7 +213,8 @@
             app:argType="boolean" />
         <action
             android:id="@+id/action_post_details_to_post_details_edit"
-            app:destination="@id/post_details_edit" />
+            app:destination="@id/post_details_edit"
+            app:popUpTo="@id/user_available_ads" />
     </fragment>
     <fragment
         android:id="@+id/post_details_edit"
