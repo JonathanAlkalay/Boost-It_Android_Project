@@ -1,6 +1,7 @@
 package com.example.boost_it_androif_project.model;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -34,6 +35,13 @@ public class Model {
         postsIsLoaded.setValue(allPostListLoadingState.loaded);
     }
 
+
+    public interface saveImageListener{
+        void onComplete(String url);
+    }
+    public void saveImage(Bitmap imageBit, String key, saveImageListener listener){
+        fireBase.saveImage(imageBit,key,listener);
+    }
 
     public interface AddUserListener{
         void onComplete();
@@ -78,8 +86,8 @@ public class Model {
     }
     public void addPost(post post, AddPostListener listener){
         fireBase.addPost(post, ()->{
-            listener.onComplete();
             refreshAllPosts();
+            listener.onComplete();
         });
     }
 

@@ -14,13 +14,13 @@
         <entry key="app/src/main/res/layout/business_historic_posts.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_historic_posts_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/business_home_page.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/business_post_new_add.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/business_post_new_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/business_post_new_add_fragment.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/business_registration_page.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/business_sign_in.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/home_page_business.xml" value="0.2451559240941228" />
         <entry key="app/src/main/res/layout/home_page_user.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/post_details.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/post_details.xml" value="0.2180694448451201" />
         <entry key="app/src/main/res/layout/registration_page.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/registration_page_business.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/sign_in_business.xml" value="0.37604166666666666" />

@@ -25,6 +25,7 @@ import com.example.boost_it_androif_project.User.user_available_ads;
 import com.example.boost_it_androif_project.User.user_available_adsDirections;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.post;
+import com.squareup.picasso.Picasso;
 
 public class business_active_posts extends Fragment {
 
@@ -35,8 +36,9 @@ public class business_active_posts extends Fragment {
 
 
     //TODO only show ads that were posted by specific buisiness
-    //TODO allow business to post picture and alsop be able to view in user side and business
+    //TODO add edit/delete for posts
     //TODO fix observer refresh when posting new add
+    //TODO change login to firebase authentication
 
     public static business_active_posts newInstance() {
         return new business_active_posts();
@@ -107,12 +109,10 @@ public class business_active_posts extends Fragment {
             hours.setText(post.getTimes());
             price.setText(post.getPrice());
 
-//            avatarImv.setImageResource(R.drawable.avatar);
-//            if (student.getAvatarUrl() != null) {
-//                Picasso.get()
-//                        .load(student.getAvatarUrl())
-//                        .into(avatarImv);
-//            }
+            image.setImageResource(R.drawable.ic_launcher_foreground);
+            Picasso.get()
+                    .load(post.getImage())
+                    .into(image);
         }
     }
 

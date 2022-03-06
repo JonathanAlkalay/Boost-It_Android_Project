@@ -20,6 +20,7 @@ import com.example.boost_it_androif_project.Business.BusinessAccountInfoViewMode
 import com.example.boost_it_androif_project.User.user_account_infoArgs;
 import com.example.boost_it_androif_project.model.Business_Account;
 import com.example.boost_it_androif_project.model.Model;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -66,6 +67,11 @@ public class post_details extends Fragment {
         }else {
             confirm.setVisibility(View.INVISIBLE);
         }
+
+        image.setImageResource(R.drawable.ic_launcher_foreground);
+        Picasso.get()
+                .load(mViewModel.getPost().getImage())
+                .into(image);
 
         Model.instance.getBusinessByEmail(mViewModel.getPost().getBusinessEmail(), business_account
                 -> companyName.setText(business_account.getCompanyName()));

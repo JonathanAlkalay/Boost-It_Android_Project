@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.boost_it_androif_project.R;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.post;
+import com.squareup.picasso.Picasso;
 
 public class user_available_ads extends Fragment {
 
@@ -95,17 +96,16 @@ public class user_available_ads extends Fragment {
             });
         }
 
+
         void bind(post post){
             name.setText(post.getTitle());
             hours.setText(post.getTimes());
             price.setText(post.getPrice());
 
-//            avatarImv.setImageResource(R.drawable.avatar);
-//            if (student.getAvatarUrl() != null) {
-//                Picasso.get()
-//                        .load(student.getAvatarUrl())
-//                        .into(avatarImv);
-//            }
+            image.setImageResource(R.drawable.ic_launcher_foreground);
+            Picasso.get()
+                    .load(post.getImage())
+                    .into(image);
         }
     }
 

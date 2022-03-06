@@ -1,5 +1,7 @@
 package com.example.boost_it_androif_project.model;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Display;
 
@@ -16,7 +18,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -26,12 +32,35 @@ import java.util.Map;
 public class ModelFireBase {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+
 
     public ModelFireBase(){
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(false)
                 .build();
         db.setFirestoreSettings(settings);
+    }
+
+    public void saveImage(Bitmap imageBit, String key, Model.saveImageListener listener) {
+
+        StorageReference storageReference = storage.getReference();
+        StorageReference imgRef = storageReference.child("/post_image" + key);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imageBit.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte [] data = baos.toByteArray();
+
+        UploadTask uploadTask = imgRef.putBytes(data);
+        uploadTask.addOnFailureListener(e -> {
+            listener.onComplete(null);
+        }).addOnSuccessListener(taskSnapshot -> {
+
+            imgRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                Uri downloadUrl = uri;
+                listener.onComplete(downloadUrl.toString());
+            });
+        });
     }
 
 
@@ -137,4 +166,5 @@ public class ModelFireBase {
     }
 
 
+    
 }
