@@ -18,18 +18,6 @@
         app:layout_constraintVertical_bias="0.954" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user_account_info_edit_password"
-        android:layout_width="319dp"
-        android:layout_height="56dp"
-        android:hint="Pick a password"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597" />
-
-    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/user_account_info_edit_phoneNumber"
         android:layout_width="319dp"
         android:layout_height="56dp"

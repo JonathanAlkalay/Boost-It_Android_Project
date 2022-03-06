@@ -42,7 +42,6 @@ public class business_account_info_editScreen extends Fragment {
         TextView companyName = view.findViewById(R.id.business_account_info_editScreen_companyName_text);
         TextView phoneNum = view.findViewById(R.id.business_account_info_editScreen_phoneNumber_text);
         TextView address = view.findViewById(R.id.business_account_info_editScreen_address_text);
-        TextView passWord = view.findViewById(R.id.business_account_info_editScreen_password_text);
         TextView description = view.findViewById(R.id.business_account_info_editScreen_description_text);
 
         name.setText(business_account_info_editScreenArgs.fromBundle(getArguments()).getName());
@@ -50,7 +49,6 @@ public class business_account_info_editScreen extends Fragment {
         companyName.setText(business_account_info_editScreenArgs.fromBundle(getArguments()).getCompanyName());
         phoneNum.setText(business_account_info_editScreenArgs.fromBundle(getArguments()).getPhoneNum());
         address.setText(business_account_info_editScreenArgs.fromBundle(getArguments()).getAddress());
-        passWord.setText(business_account_info_editScreenArgs.fromBundle(getArguments()).getPassWord());
 
         String aboutMe = business_account_info_editScreenArgs.fromBundle(getArguments()).getAboutMe();
         if (aboutMe == null){
@@ -69,12 +67,11 @@ public class business_account_info_editScreen extends Fragment {
             String compName = companyName.getText().toString();
             String phnNum = phoneNum.getText().toString();
             String addrs = address.getText().toString();
-            String psswrd = passWord.getText().toString();
             String descr = description.getText().toString();
 
 
-            if ( !firstName.equals("") && !lstname.equals("") && !passWord.equals("")&&!phnNum.equals("")&&!compName.equals("")
-                    &&!addrs.equals("")&&!psswrd.equals("")&&!descr.equals("") ) {
+            if ( !firstName.equals("") && !lstname.equals("") &&!phnNum.equals("")&&!compName.equals("")
+                    &&!addrs.equals("")&&!descr.equals("") ) {
 
                 Toast toast = Toast.makeText(getActivity(), "Updated Account", Toast.LENGTH_LONG);
                 toast.show();
@@ -84,7 +81,7 @@ public class business_account_info_editScreen extends Fragment {
                 business_account.setFirstName(firstName);
                 business_account.setLastName(lstname);
                 business_account.setCompanyName(compName);
-                business_account.setPassWord(psswrd);
+                business_account.setPassWord(business_account_info_editScreenArgs.fromBundle(getArguments()).getPassWord());
                 business_account.setPhoneNumber(phnNum);
                 business_account.setAddress(addrs);
                 business_account.setEmail(business_account_info_editScreenArgs.fromBundle(getArguments()).getEmail());

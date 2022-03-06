@@ -74,13 +74,16 @@ public class business_sign_in extends Fragment {
         mViewModel.getmAuth().signInWithEmailAndPassword(email, passWord)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
-                        Navigation.findNavController(view).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(user.getEmail()));
+                        Model.instance.getBusinessByEmail(email, business_account -> {
+                            if(business_account != null){
+                                FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
+                                Navigation.findNavController(view).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(user.getEmail()));
+                            }
+                        });
                     }else {
                         Toast toast = Toast.makeText(getActivity(), "Incorrect Password or User does not exist", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });
     }
-
 }

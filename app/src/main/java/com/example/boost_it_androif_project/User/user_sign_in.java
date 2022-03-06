@@ -73,8 +73,12 @@ public class user_sign_in extends Fragment {
         mViewModel.getmAuth().signInWithEmailAndPassword(email, passWord)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
-                        Navigation.findNavController(view).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(user.getEmail()));
+                        Model.instance.getUserByEmail(email, user_account -> {
+                            if (user_account != null){
+                                FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
+                                Navigation.findNavController(view).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(user.getEmail()));
+                            }
+                        });
                     }else {
                         Toast toast = Toast.makeText(getActivity(), "Incorrect Password or User does not exist", Toast.LENGTH_LONG);
                         toast.show();

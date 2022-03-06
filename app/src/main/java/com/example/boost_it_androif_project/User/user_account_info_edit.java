@@ -38,12 +38,10 @@ public class user_account_info_edit extends Fragment {
 
         TextView name = (TextView) view.findViewById(R.id.user_account_info_edit_name);
         TextView lastName = (TextView) view.findViewById(R.id.user_account_info_edit_lastName);
-        TextView pickPssword = (TextView) view.findViewById(R.id.user_account_info_edit_password);
         TextView phoneNumber = (TextView) view.findViewById(R.id.user_account_info_edit_phoneNumber);
 
         name.setText(user_account_info_editArgs.fromBundle(getArguments()).getUserName());
         lastName.setText(user_account_info_editArgs.fromBundle(getArguments()).getUserLastName());
-        pickPssword.setText(user_account_info_editArgs.fromBundle(getArguments()).getUserPassword());
         phoneNumber.setText(user_account_info_editArgs.fromBundle(getArguments()).getUserPhoneNumber());
 
         Button bttn = view.findViewById(R.id.user_account_info_edit_confirmBttn);
@@ -51,11 +49,10 @@ public class user_account_info_edit extends Fragment {
 
             String firstName = name.getText().toString();
             String lstname = lastName.getText().toString();
-            String passWord = pickPssword.getText().toString();
             String phnNum = phoneNumber.getText().toString();
 
 
-            if ( firstName!=null && lstname!=null && passWord!=null&&phnNum!=null ) {
+            if ( firstName!=null && lstname!=null &&phnNum!=null ) {
 
                 Toast toast = Toast.makeText(getActivity(), "Updated Account", Toast.LENGTH_LONG);
                 toast.show();
@@ -64,9 +61,10 @@ public class user_account_info_edit extends Fragment {
 
                 user_account.setFirstName(firstName);
                 user_account.setLastName(lstname);
-                user_account.setPassWord(passWord);
+                user_account.setPassWord(user_account_info_editArgs.fromBundle(getArguments()).getUserPassword());
                 user_account.setPhoneNumber(phnNum);
                 user_account.setEmail(user_account_info_editArgs.fromBundle(getArguments()).getUserEmail());
+
 
                 Model.instance.addUser(user_account, () -> Navigation.findNavController(view).popBackStack());
             }else {

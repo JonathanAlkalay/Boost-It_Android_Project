@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.boost_it_androif_project.R;
-import com.example.boost_it_androif_project.model.Business_Account;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.post;
 
@@ -146,14 +145,14 @@ public class business_post_new_add extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE){
-            if (resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            if (resultCode == Activity.RESULT_OK) {
 
                 Bundle extras = data.getExtras();
-                imageBitmap = (Bitmap)extras.get("data");
+                imageBitmap = (Bitmap) extras.get("data");
                 picture.setImageBitmap(imageBitmap);
             }
-            else if (requestCode == REQUEST_IMAGE_GALLERY){
+        } else if (requestCode == REQUEST_IMAGE_GALLERY){
 
                 if (requestCode == Activity.RESULT_OK){
                     try {
@@ -167,5 +166,4 @@ public class business_post_new_add extends Fragment {
                 }
             }
         }
-    }
 }
