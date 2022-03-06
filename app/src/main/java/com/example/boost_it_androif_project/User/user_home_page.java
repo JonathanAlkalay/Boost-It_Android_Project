@@ -41,6 +41,7 @@ public class user_home_page extends Fragment {
 
         Button logOut = view.findViewById(R.id.user_home_page_Log_Out_button);
         logOut.setOnClickListener(v->{
+            mViewModel.getmAuth().signOut();
             Navigation.findNavController(v).popBackStack();
         });
 

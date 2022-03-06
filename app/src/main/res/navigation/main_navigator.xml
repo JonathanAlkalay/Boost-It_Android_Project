@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_welcome_screen_to_business_sign_in"
             app:destination="@id/business_sign_in" />
+        <action
+            android:id="@+id/action_welcome_screen_to_user_home_page"
+            app:destination="@id/user_home_page" />
+        <action
+            android:id="@+id/action_welcome_screen_to_business_home_page"
+            app:destination="@id/business_home_page" />
     </fragment>
     <fragment
         android:id="@+id/user_sign_in2"

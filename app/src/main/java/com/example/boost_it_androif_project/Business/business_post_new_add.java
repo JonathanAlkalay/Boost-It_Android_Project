@@ -91,7 +91,6 @@ public class business_post_new_add extends Fragment {
             TextView hours = view.findViewById(R.id.business_post_new_add_hours);
             TextView price = view.findViewById(R.id.business_post_new_add_price);
             TextView description = view.findViewById(R.id.business_post_new_add_description);
-            ImageView picture = view.findViewById(R.id.business_post_new_add_image);
 
 
             String ttle = title.getText().toString();
@@ -139,7 +138,7 @@ public class business_post_new_add extends Fragment {
     private void openGallery(){
         Intent galleryPicker = new Intent(Intent.ACTION_PICK);
         galleryPicker.setType("image/*");
-
+        startActivityForResult(galleryPicker,REQUEST_IMAGE_GALLERY);
     }
 
     Bitmap imageBitmap = null;

@@ -38,7 +38,6 @@ public class business_active_posts extends Fragment {
     //TODO only show ads that were posted by specific buisiness
     //TODO add edit/delete for posts
     //TODO fix observer refresh when posting new add
-    //TODO change login to firebase authentication
 
     public static business_active_posts newInstance() {
         return new business_active_posts();

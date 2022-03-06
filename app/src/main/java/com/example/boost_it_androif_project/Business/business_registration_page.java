@@ -51,39 +51,46 @@ public class business_registration_page extends Fragment {
             TextView confirmPsswrd = (TextView) view.findViewById(R.id.business_registration_page_confirmPassword_textEdit);
             TextView phoneNumber = (TextView) view.findViewById(R.id.business_registration_page_phoneNumber_textEdit);
 
-            Model.instance.getBusinessByEmail(eml.getText().toString(), bsnessAccnt -> {
-                businessCheck = bsnessAccnt;
+            if (!eml.getText().toString().equals("") && pickPssword.getText().toString().length() >= 6) {
+                Model.instance.getBusinessByEmail(eml.getText().toString(), bsnessAccnt -> {
+                    businessCheck = bsnessAccnt;
 
-                if (businessCheck != null) {
-                    Toast toast = Toast.makeText(getActivity(), "User Already Exists", Toast.LENGTH_LONG);
-                    toast.show();
-                }else {
-
-                    String email = eml.getText().toString();
-
-                    String firstName = name.getText().toString();
-                    String lstname = lastName.getText().toString();
-                    String compName = companyName.getText().toString();
-                    String addrs = address.getText().toString();
-                    String passWord = pickPssword.getText().toString();
-                    String confPass = confirmPsswrd.getText().toString();
-                    String phnNum = phoneNumber.getText().toString();
-
-                    if (email!=null&&firstName!=null&&lstname!=null&&compName!=null&&addrs!=null&&passWord!=null&&
-                            confPass!=null&&phnNum!=null&& passWord.equals(confPass)) {
-
-                        Business_Account business_account1 = new Business_Account(compName,null, addrs, email, firstName, lstname, passWord,phnNum);
-
-                        Toast toast = Toast.makeText(getActivity(), "Added Account", Toast.LENGTH_LONG);
+                    if (businessCheck != null) {
+                        Toast toast = Toast.makeText(getActivity(), "User Already Exists", Toast.LENGTH_LONG);
                         toast.show();
+                    } else {
 
-                        Model.instance.addBusiness(business_account1, () -> Navigation.findNavController(v).navigateUp());
-                    }else {
-                        Toast toast = Toast.makeText(getActivity(), "PassWords don't match or missing fields", Toast.LENGTH_LONG);
-                        toast.show();
+                        String email = eml.getText().toString();
+
+                        String firstName = name.getText().toString();
+                        String lstname = lastName.getText().toString();
+                        String compName = companyName.getText().toString();
+                        String addrs = address.getText().toString();
+                        String passWord = pickPssword.getText().toString();
+                        String confPass = confirmPsswrd.getText().toString();
+                        String phnNum = phoneNumber.getText().toString();
+
+                        if (!email.equals("") && !firstName.equals("") && !lstname.equals("") && !compName.equals("") && !addrs.equals("") && !passWord.equals("") &&
+                                !confPass.equals("") && !phnNum.equals("") && passWord.equals(confPass)) {
+
+                            Business_Account business_account1 = new Business_Account(compName, null, addrs, email, firstName, lstname, passWord, phnNum);
+
+                            Toast toast = Toast.makeText(getActivity(), "Added Account", Toast.LENGTH_LONG);
+                            toast.show();
+
+                            mViewModel.getmAuth().createUserWithEmailAndPassword(email, passWord);
+
+                            Model.instance.addBusiness(business_account1, () -> Navigation.findNavController(v).navigateUp());
+                        } else {
+                            Toast toast = Toast.makeText(getActivity(), "PassWords don't match or missing fields", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     }
-                }
-            });
+                });
+            }else {
+                Toast toast = Toast.makeText(getActivity(), "missing fields or passWord length is smaller than 6", Toast.LENGTH_LONG);
+                toast.show();
+            }
         });
         return view;
     }

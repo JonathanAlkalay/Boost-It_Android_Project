@@ -21,11 +21,15 @@ import com.example.boost_it_androif_project.MyApplication;
 import com.example.boost_it_androif_project.R;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.User_Account;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class user_sign_in extends Fragment {
 
     private UserSignInViewModel mViewModel;
-    User_Account userCheck = null;
 
     public static user_sign_in newInstance() {
         return new user_sign_in();
@@ -43,10 +47,8 @@ public class user_sign_in extends Fragment {
         TextView email = (TextView) view.findViewById(R.id.user_sign_in_UserName_textEdit);
         TextView passWord = (TextView) view.findViewById(R.id.user_sign_in_Password_textEdit);
 
-
-
-
         signInEnterButtn.setOnClickListener(v -> {
+
 
             String mail = email.getText().toString();
             String pssWord = passWord.getText().toString();
@@ -56,34 +58,28 @@ public class user_sign_in extends Fragment {
                 Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
                 toast.show();
             }else{
-
-                    Model.instance.getUserByEmail(mail, user_account -> {
-                        userCheck = user_account;
-
-                        if (userCheck == null) {
-                            Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
-                            toast.show();
-                        } else {
-                            if (userCheck.getPassWord().equals(pssWord)) {
-                                email.setText("");
-                                passWord.setText("");
-                                Navigation.findNavController(v).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(mail));
-
-                            } else {
-                                Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        }
-                    });
+                fireBaseAuthentication(mail,pssWord,v);
                 }
         });
 
         createAccountBttn.setOnClickListener(v -> {
-
             Navigation.findNavController(v).navigate(user_sign_inDirections.actionUserSignIn2ToUserRegistration());
         });
 
         return view;
+    }
+
+    private void fireBaseAuthentication(String email, String passWord,View view ){
+        mViewModel.getmAuth().signInWithEmailAndPassword(email, passWord)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
+                        Navigation.findNavController(view).navigate(user_sign_inDirections.actionUserSignIn2ToUserHomePage(user.getEmail()));
+                    }else {
+                        Toast toast = Toast.makeText(getActivity(), "Incorrect Password or User does not exist", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
     }
 
 

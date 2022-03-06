@@ -19,16 +19,14 @@ import android.widget.Toast;
 
 import com.example.boost_it_androif_project.R;
 import com.example.boost_it_androif_project.User.UserSignInViewModel;
-import com.example.boost_it_androif_project.User.user_sign_inDirections;
 import com.example.boost_it_androif_project.model.Business_Account;
 import com.example.boost_it_androif_project.model.Model;
 import com.example.boost_it_androif_project.model.User_Account;
+import com.google.firebase.auth.FirebaseUser;
 
 public class business_sign_in extends Fragment {
 
     private BusinessSignInViewModel mViewModel;
-    Business_Account businessCheck = null;
-
 
     public static business_sign_in newInstance() {
         return new business_sign_in();
@@ -56,25 +54,7 @@ public class business_sign_in extends Fragment {
                 Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
                 toast.show();
             }else {
-                Model.instance.getBusinessByEmail(mail, business_account -> {
-                    businessCheck = business_account;
-
-                    if (businessCheck == null) {
-                        Toast toast = Toast.makeText(getActivity(), "User Does Not Exist", Toast.LENGTH_LONG);
-                        toast.show();
-                    } else {
-                        if (businessCheck.getPassWord().equals(pssWord)) {
-
-                            email.setText("");
-                            passWord.setText("");
-                            Navigation.findNavController(v).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(mail));
-
-                        } else {
-                            Toast toast = Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    }
-                });
+                fireBaseAuthentication(mail,pssWord,v);
             }
         });
 
@@ -88,6 +68,19 @@ public class business_sign_in extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mViewModel = new ViewModelProvider(this).get(BusinessSignInViewModel.class);
+    }
+
+    private void fireBaseAuthentication(String email, String passWord,View view ){
+        mViewModel.getmAuth().signInWithEmailAndPassword(email, passWord)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mViewModel.getmAuth().getCurrentUser();
+                        Navigation.findNavController(view).navigate(business_sign_inDirections.actionBusinessSignInToBusinessHomePage(user.getEmail()));
+                    }else {
+                        Toast toast = Toast.makeText(getActivity(), "Incorrect Password or User does not exist", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
     }
 
 }

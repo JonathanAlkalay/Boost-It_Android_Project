@@ -4,14 +4,19 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 
+import com.example.boost_it_androif_project.User.user_sign_inDirections;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,7 +40,7 @@ public class ModelFireBase {
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
-    public ModelFireBase(){
+    public ModelFireBase() {
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(false)
                 .build();
@@ -49,7 +54,7 @@ public class ModelFireBase {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         imageBit.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte [] data = baos.toByteArray();
+        byte[] data = baos.toByteArray();
 
         UploadTask uploadTask = imgRef.putBytes(data);
         uploadTask.addOnFailureListener(e -> {
@@ -64,7 +69,7 @@ public class ModelFireBase {
     }
 
 
-    public void addUser(User_Account user,Model.AddUserListener listener) {
+    public void addUser(User_Account user, Model.AddUserListener listener) {
 
         Map<String, Object> json = user.toJson(user);
 
@@ -76,12 +81,13 @@ public class ModelFireBase {
     }
 
     public void getUserByEmail(String email, Model.GetUserByEmailListener listener) {
+
         db.collection(User_Account.collectionName)
                 .document(email)
                 .get()
                 .addOnCompleteListener(task -> {
                     User_Account user = null;
-                    if (task.isSuccessful() & task.getResult()!= null){
+                    if (task.isSuccessful() & task.getResult() != null) {
                         user = User_Account.UserfromJson(task.getResult().getData());
                     }
                     listener.onComplete(user);
@@ -104,18 +110,18 @@ public class ModelFireBase {
                 .get()
                 .addOnCompleteListener(task -> {
                     Business_Account business_account = null;
-                    if (task.isSuccessful() & task.getResult()!= null){
+                    if (task.isSuccessful() & task.getResult() != null) {
                         business_account = Business_Account.BusinessesfromJson(task.getResult().getData());
                     }
                     listener.onComplete(business_account);
                 });
     }
 
-    public void updateBusiness(String email, String field ,Object value){
+    public void updateBusiness(String email, String field, Object value) {
 
         db.collection(Business_Account.collectionName)
                 .document(email)
-                .update(field,value);
+                .update(field, value);
     }
 
     public void addPost(post post, Model.AddPostListener listener) {
@@ -130,13 +136,13 @@ public class ModelFireBase {
     }
 
 
-    public void getPostById(String id, Model.getPostByIdListener listener){
+    public void getPostById(String id, Model.getPostByIdListener listener) {
         db.collection(post.collectionName)
                 .document(id)
                 .get()
                 .addOnCompleteListener(task -> {
                     post post1 = null;
-                    if (task.isSuccessful() & task.getResult()!= null){
+                    if (task.isSuccessful() & task.getResult() != null) {
                         post1 = post.postfromJson(task.getResult().getData());
                     }
                     listener.onComplete(post1);
@@ -144,19 +150,20 @@ public class ModelFireBase {
     }
 
 
-    public interface getAllPostsListener{
+    public interface getAllPostsListener {
         void onComplete(List<post> list);
     }
+
     public void getAllPosts(Long lastUpdateDate, getAllPostsListener listener) {
         db.collection(post.collectionName)
-                .whereGreaterThanOrEqualTo("updateDate",new Timestamp(lastUpdateDate,0))
+                .whereGreaterThanOrEqualTo("updateDate", new Timestamp(lastUpdateDate, 0))
                 .get()
                 .addOnCompleteListener(task -> {
                     List<post> list = new ArrayList<>();
-                    if (task.isSuccessful()){
-                        for (QueryDocumentSnapshot doc : task.getResult()){
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
                             post post1 = post.postfromJson(doc.getData());
-                            if (post1 != null){
+                            if (post1 != null) {
                                 list.add(post1);
                             }
                         }
@@ -164,7 +171,4 @@ public class ModelFireBase {
                     listener.onComplete(list);
                 });
     }
-
-
-    
 }

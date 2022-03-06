@@ -128,7 +128,8 @@ public class Model {
                         .getSharedPreferences("TAG",Context.MODE_PRIVATE)
                         .edit().putLong("PostsLastUpdateDate",lud).commit();
 
-                allPosts.postValue(AppLocalDB.db.post_dao().getAll());
+                List<post> pstLst = AppLocalDB.db.post_dao().getAll();
+                allPosts.postValue(pstLst);
                 postsIsLoaded.postValue(allPostListLoadingState.loaded);
             });
         });
