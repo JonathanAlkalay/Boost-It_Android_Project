@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.boost_it_androif_project.model.Business_Account;
 import com.example.boost_it_androif_project.model.Model;
@@ -23,6 +24,7 @@ public class welcome_screen extends Fragment {
 
     private WelcomeScreenViewModel mViewModel;
     private Button userBttn, businessBttn;
+    private TextView selectOne;
 
     public static welcome_screen newInstance() {
         return new welcome_screen();
@@ -36,25 +38,29 @@ public class welcome_screen extends Fragment {
 
         userBttn = view.findViewById(R.id.welcome_screen_userAccount_bttn);
         businessBttn = view.findViewById(R.id.welcome_screen_BusinessAccount_bttn);
-
+        selectOne = view.findViewById(R.id.welcome_screen_selectOne_textView);
 
         FirebaseUser currentUser = mViewModel.getmAuth().getCurrentUser();
         if(currentUser != null){
 
             Model.instance.getBusinessByEmail(currentUser.getEmail(), business_account -> {
-                if (business_account.getClass() != Business_Account.class) {
 
+                if (business_account == null ) {
                     Navigation.findNavController(view).navigate(welcome_screenDirections.actionWelcomeScreenToUserHomePage(currentUser.getEmail()));
                 }else {
 
-                    Navigation.findNavController(view).navigate(welcome_screenDirections.actionWelcomeScreenToBusinessHomePage(currentUser.getEmail()));
+                    Model.instance.getUserByEmail(currentUser.getEmail(),acc->{
+                        if (acc == null)
+                        Navigation.findNavController(view).navigate(welcome_screenDirections.actionWelcomeScreenToBusinessHomePage(currentUser.getEmail()));
+                    });
                 }
             });
+
         }else {
             userBttn.setVisibility(View.VISIBLE);
             businessBttn.setVisibility(View.VISIBLE);
+            selectOne.setVisibility(View.VISIBLE);
         }
-
 
         userBttn.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(welcome_screenDirections.actionWelcomeScreenToUserSignIn2()));

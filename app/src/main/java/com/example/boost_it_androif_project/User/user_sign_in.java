@@ -58,7 +58,15 @@ public class user_sign_in extends Fragment {
                 Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
                 toast.show();
             }else{
-                fireBaseAuthentication(mail,pssWord,v);
+                Model.instance.getUserByEmail(mail, user_account -> {
+                    if (user_account == null){
+                        Toast toast = Toast.makeText(getActivity(), "user does not exist!", Toast.LENGTH_LONG);
+                        toast.show();
+                    }else {
+                        fireBaseAuthentication(mail,pssWord,v);
+                    }
+
+                });
                 }
         });
 

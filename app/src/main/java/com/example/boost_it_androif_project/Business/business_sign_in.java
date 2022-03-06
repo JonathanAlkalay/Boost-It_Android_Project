@@ -54,7 +54,17 @@ public class business_sign_in extends Fragment {
                 Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
                 toast.show();
             }else {
-                fireBaseAuthentication(mail,pssWord,v);
+                Model.instance.getBusinessByEmail(mail, new Model.getBusinessByEmailListener() {
+                    @Override
+                    public void onComplete(Business_Account business_account) {
+                        if (business_account == null){
+                            Toast toast = Toast.makeText(getActivity(), "user does not exist!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }else {
+                            fireBaseAuthentication(mail,pssWord,v);
+                        }
+                    }
+                });
             }
         });
 
