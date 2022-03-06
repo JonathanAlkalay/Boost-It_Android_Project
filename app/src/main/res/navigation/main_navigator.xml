@@ -211,5 +211,17 @@
         <argument
             android:name="isBusiness"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_post_details_to_post_details_edit"
+            app:destination="@id/post_details_edit" />
+    </fragment>
+    <fragment
+        android:id="@+id/post_details_edit"
+        android:name="com.example.boost_it_androif_project.post_details_edit"
+        android:label="post_details_edit"
+        tools:layout="@layout/post_details_edit">
+        <argument
+            android:name="post_id"
+            app:argType="string" />
     </fragment>
 </navigation>

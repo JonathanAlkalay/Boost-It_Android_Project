@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +81,13 @@ public class post_details extends Fragment {
         hours.setText(mViewModel.getPost().getTimes());
         price.setText(mViewModel.getPost().getPrice());
         description.setText(mViewModel.getPost().getDescription());
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(post_detailsDirections.actionPostDetailsToPostDetailsEdit(mViewModel.getPost().getKey()));
+            }
+        });
     }
 
     @Override

@@ -34,15 +34,12 @@ public class welcome_screen extends Fragment {
 
         View view = inflater.inflate(R.layout.welcome_screen, container, false);
 
-
         userBttn = view.findViewById(R.id.welcome_screen_userAccount_bttn);
         businessBttn = view.findViewById(R.id.welcome_screen_BusinessAccount_bttn);
 
         FirebaseUser currentUser = mViewModel.getmAuth().getCurrentUser();
         if(currentUser != null){
 
-            userBttn.setVisibility(View.INVISIBLE);
-            userBttn.setVisibility(View.INVISIBLE);
             Model.instance.getBusinessByEmail(currentUser.getEmail(), business_account -> {
                 if (business_account == null) {
                     Navigation.findNavController(view).navigate(welcome_screenDirections.actionWelcomeScreenToUserHomePage(currentUser.getEmail()));
@@ -50,8 +47,11 @@ public class welcome_screen extends Fragment {
                     Navigation.findNavController(view).navigate(welcome_screenDirections.actionWelcomeScreenToBusinessHomePage(currentUser.getEmail()));
                 }
             });
-
+        }else {
+            userBttn.setVisibility(View.VISIBLE);
+            userBttn.setVisibility(View.VISIBLE);
         }
+
 
         userBttn.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(welcome_screenDirections.actionWelcomeScreenToUserSignIn2()));
