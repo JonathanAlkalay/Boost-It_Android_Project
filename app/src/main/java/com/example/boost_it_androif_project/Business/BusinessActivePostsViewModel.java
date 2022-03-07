@@ -11,9 +11,7 @@ import java.util.List;
 public class BusinessActivePostsViewModel extends ViewModel {
 
     LiveData<List<post>> data;
-    public BusinessActivePostsViewModel(){
-        data = Model.instance.getAllPosts();
-    }
-    public LiveData<List<post>> getData() { return data; }
 
+    public void setData(String mail){ data = Model.instance.getAllBusinessPosts(mail); }
+    public LiveData<List<post>> getData() { return data; }
 }

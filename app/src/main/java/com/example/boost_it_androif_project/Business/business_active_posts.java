@@ -34,8 +34,6 @@ public class business_active_posts extends Fragment {
     MyAdapter adapter;
     SwipeRefreshLayout swipeRefresh;
 
-    //TODO only show ads that were posted by current business
-
     public static business_active_posts newInstance() {
         return new business_active_posts();
     }
@@ -45,9 +43,12 @@ public class business_active_posts extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         this.view =  inflater.inflate(R.layout.business_active_posts, container, false);
 
-        swipeRefresh = view.findViewById(R.id.businessActivePosts_swipeToRefresh);
-        swipeRefresh.setOnRefreshListener(() -> Model.instance.refreshAllPosts());
+        String email = business_active_postsArgs.fromBundle(getArguments()).getBusinessEmail();
 
+        swipeRefresh = view.findViewById(R.id.businessActivePosts_swipeToRefresh);
+        swipeRefresh.setOnRefreshListener(() -> Model.instance.refreshAllBusinessPosts(email));
+
+        mViewModel.setData(email);
 
         RecyclerView list = view.findViewById(R.id.business_activePosts_recyclerView);
         list.setHasFixedSize(true);
@@ -63,8 +64,8 @@ public class business_active_posts extends Fragment {
         });
 
         mViewModel.getData().observe(getViewLifecycleOwner(), list1 -> refresh());
-        swipeRefresh.setRefreshing(Model.instance.getPostsIsLoaded().getValue() == Model.allPostListLoadingState.loading);
-        Model.instance.getPostsIsLoaded().observe(getViewLifecycleOwner(), postLoadingState -> {
+        swipeRefresh.setRefreshing(Model.instance.getBusinessPostssIsLoaded().getValue() == Model.allPostListLoadingState.loading);
+        Model.instance.getBusinessPostssIsLoaded().observe(getViewLifecycleOwner(), postLoadingState -> {
             if (postLoadingState == Model.allPostListLoadingState.loading){
                 swipeRefresh.setRefreshing(true);
             }else{
@@ -72,6 +73,7 @@ public class business_active_posts extends Fragment {
             }
         });
 
+        Model.instance.refreshAllBusinessPosts(email);
         return this.view;
     }
     private void refresh() {

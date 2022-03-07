@@ -171,7 +171,7 @@ public class Model {
         long lastUpdateDate = MyApplication.getContext().getSharedPreferences("TAG", Context.MODE_PRIVATE)
                 .getLong("PostsLastUpdateDate",0);
 
-        fireBase.getAllPostsOfBusiness(lastUpdateDate,email, list -> {
+        fireBase.getAllPosts(lastUpdateDate, list -> {
             threadPool.execute(()->{
                 Long lud = new Long(0);
 
@@ -185,7 +185,14 @@ public class Model {
                         .edit().putLong("PostsLastUpdateDate",lud).commit();
 
                 List<post> pstLst = AppLocalDB.db.post_dao().getAll();
-                allBusinessPosts.postValue(pstLst);
+
+                List<post> update = new ArrayList<>();
+                for (post p:pstLst){
+                    if (p.getBusinessEmail().equals(email))
+                        update.add(p);
+                }
+
+                allBusinessPosts.postValue(update);
                 businessPostsIsLoaded.postValue(allPostListLoadingState.loaded);
             });
         });
