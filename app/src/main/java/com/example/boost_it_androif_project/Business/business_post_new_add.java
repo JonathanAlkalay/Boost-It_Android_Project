@@ -91,7 +91,6 @@ public class business_post_new_add extends Fragment {
             TextView price = view.findViewById(R.id.business_post_new_add_price);
             TextView description = view.findViewById(R.id.business_post_new_add_description);
 
-
             String ttle = title.getText().toString();
             String hrs = hours.getText().toString();
             String prce = price.getText().toString();

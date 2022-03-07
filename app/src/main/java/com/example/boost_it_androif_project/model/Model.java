@@ -99,6 +99,15 @@ public class Model {
             listener.onComplete();
         });
     }
+    public interface editPostListener{
+        void onComplete();
+    }
+    public void editPost(post post1, post oldPost, editPostListener listener){
+        fireBase.editPost(post1,oldPost,()->{
+            refreshAllPosts();
+            listener.onComplete();
+        });
+    }
 
     public interface getPostByIdListener{
         void onComplete(post post);

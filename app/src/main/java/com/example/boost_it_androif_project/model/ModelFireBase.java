@@ -3,6 +3,7 @@ package com.example.boost_it_androif_project.model;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -119,13 +120,35 @@ public class ModelFireBase {
                 .addOnFailureListener(System.out::print);
     }
 
+    public void editPost(post newPost, post oldPost, Model.editPostListener listener) {
+
+        if (newPost.getKey().equals(oldPost.getKey()) && newPost.getImage().equals(oldPost.getImage())){
+            listener.onComplete();
+            return;
+        }
+
+        new Thread(()->AppLocalDB.db.post_dao().delete(oldPost)).start();
+
+        db.collection(post.collectionName).document(oldPost.getKey()).delete()
+                .addOnSuccessListener(unused ->{
+
+            Map<String, Object> json = post.toJson(newPost);
+
+            db.collection(post.collectionName)
+                    .document(newPost.getKey())
+                    .set(json)
+                    .addOnSuccessListener(u -> listener.onComplete());
+        });
+    }
 
     public void deletePost(post post1, Model.deletePostListener listener) {
 
         new Thread(()->AppLocalDB.db.post_dao().delete(post1)).start();
 
-        db.collection(post.collectionName).document(post1.getKey()).update("deleted",true).addOnSuccessListener(unused ->
-                listener.onComplete());
+//        db.collection(post.collectionName).document(post1.getKey()).update("deleted",true).addOnSuccessListener(unused ->
+//                listener.onComplete());
+        db.collection(post.collectionName).document(post1.getKey()).delete().addOnSuccessListener(unused
+                -> listener.onComplete());
     }
 
     public void getPostById(String id, Model.getPostByIdListener listener) {
@@ -160,10 +183,10 @@ public class ModelFireBase {
                             }
                         }
                     }
-                    for (post p:list){
-                        if (p.getDeleted())
-                            list.remove(p);
-                    }
+//                    for (post p:list){
+//                        if (p.getDeleted())
+//                            list.remove(p);
+//                    }
 
                     listener.onComplete(list);
                 });

@@ -23,8 +23,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.boost_it_androif_project.model.Model;
+import com.example.boost_it_androif_project.model.post;
 import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
@@ -101,19 +103,53 @@ public class post_details_edit extends Fragment {
         camera.setOnClickListener(v -> openCamera());
         gallery.setOnClickListener(v -> openGallery());
 
-        //TODO complete, update post with timestamp in firebase and delete old post in DAO local db
         confirm.setOnClickListener(v -> {
 
+            String ttle = title.getText().toString();
+            String hrs = hours.getText().toString();
+            String prce = price.getText().toString();
+            String dscrptn = description.getText().toString();
 
-            Navigation.findNavController(v).navigateUp();
+            if ( !ttle.equals("") && !hrs.equals("") && !prce.equals("") && !dscrptn.equals("")) {
+
+                post newPost = new post();
+
+                if (imageBitmap == null)
+                    newPost.setImage(mViewModel.getPost().getImage());
+
+                newPost.setTitle(ttle);
+                newPost.setBusinessEmail(mViewModel.getPost().getBusinessEmail());
+                newPost.setTimes(hrs);
+                newPost.setDescription(dscrptn);
+                newPost.setPrice(prce);
+                newPost.setKey(newPost.generateKey(mViewModel.getPost().getBusinessEmail()));
+
+                Toast toast = Toast.makeText(getActivity(), "Updated Post", Toast.LENGTH_LONG);
+                toast.show();
+
+                if (imageBitmap!=null) {
+                    Model.instance.saveImage(imageBitmap, newPost.getKey() + ".jpg", url -> {
+                        newPost.setImage(url);
+
+                        Model.instance.editPost(newPost, mViewModel.getPost(), () ->
+                                Navigation.findNavController(v).navigateUp());
+                    });
+                }else {
+                    Model.instance.editPost(newPost, mViewModel.getPost(), () ->
+                            Navigation.findNavController(v).navigateUp());
+                }
+
+            } else {
+                Toast toast = Toast.makeText(getActivity(), "missing fields", Toast.LENGTH_LONG);
+                toast.show();
+            }
+
         });
 
-        //TODO complete, delete post with  in firebase and delete  post in DAO local db
-        delete.setOnClickListener(v -> {
 
-            Model.instance.deletePost(mViewModel.getPost(), () ->
-                    Navigation.findNavController(v).popBackStack());
-        });
+        delete.setOnClickListener(v ->
+                Model.instance.deletePost(mViewModel.getPost(), ()
+                        -> Navigation.findNavController(v).popBackStack()));
     }
 
 
