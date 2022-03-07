@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -50,7 +51,7 @@ public class ModelFireBase {
     public void saveImage(Bitmap imageBit, String key, Model.saveImageListener listener) {
 
         StorageReference storageReference = storage.getReference();
-        StorageReference imgRef = storageReference.child("/post_image" + key);
+        StorageReference imgRef = storageReference.child("post_image/" + key);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         imageBit.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -135,6 +136,14 @@ public class ModelFireBase {
                 .addOnFailureListener(System.out::print);
     }
 
+
+    public void deletePost(post post1, Model.deletePostListener listener) {
+
+        new Thread(()->AppLocalDB.db.post_dao().delete(post1)).start();
+
+        db.collection(post.collectionName).document(post1.getKey()).update("deleted",true).addOnSuccessListener(unused ->
+                listener.onComplete());
+    }
 
     public void getPostById(String id, Model.getPostByIdListener listener) {
         db.collection(post.collectionName)

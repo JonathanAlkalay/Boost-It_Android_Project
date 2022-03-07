@@ -111,8 +111,8 @@ public class post_details_edit extends Fragment {
         //TODO complete, delete post with  in firebase and delete  post in DAO local db
         delete.setOnClickListener(v -> {
 
-
-            Navigation.findNavController(v).popBackStack();
+            Model.instance.deletePost(mViewModel.getPost(), () ->
+                    Navigation.findNavController(v).popBackStack());
         });
     }
 
@@ -145,7 +145,7 @@ public class post_details_edit extends Fragment {
             }
         } else if (requestCode == REQUEST_IMAGE_GALLERY){
 
-                if (requestCode == Activity.RESULT_OK){
+                if (resultCode == Activity.RESULT_OK){
                     try {
                         final Uri imageUri = data.getData();
                         final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);

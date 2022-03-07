@@ -31,6 +31,7 @@ public class post {
     private String price;
     private String times;
     private String image;
+    private Boolean deleted = false;
     private Long upDateDate = new Long(0);
 
 
@@ -45,6 +46,7 @@ public class post {
         this.image = image;
         this.businessEmail = businessEmail;
         this.key = title+description+price+times+businessEmail;
+        this.deleted = false;
     }
 
 
@@ -54,6 +56,10 @@ public class post {
     public String getKey() { return key; }
 
     public void setKey(@NonNull String key) { this.key = key; }
+
+    public Boolean getDeleted() { return deleted; }
+
+    public void setDeleted(Boolean deleted) { this.deleted = deleted; }
 
     public String getTitle() {
         return title;
@@ -103,7 +109,7 @@ public class post {
 
     public void setBusinessEmail(String businessEmail) { this.businessEmail = businessEmail; }
 
-    public Map<String, Object> toJson(post post) {
+    public static Map<String, Object> toJson(post post) {
 
         Map<String, Object> postJson = new HashMap<>();
 
@@ -115,6 +121,7 @@ public class post {
         postJson.put("image", post.image);
         postJson.put("key", post.key);
         postJson.put("updateDate", FieldValue.serverTimestamp());
+        postJson.put("deleted",post.deleted);
 
         return postJson;
     }
@@ -131,6 +138,7 @@ public class post {
         String times = (String) json.get("times");
         String image = (String) json.get("image");
         String key = (String) json.get("key");
+        Boolean deleted = (Boolean)json.get("deleted");
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
@@ -138,31 +146,8 @@ public class post {
 
         post.upDateDate = updateDate;
         post.key = key;
+        post.deleted = deleted;
 
         return post;
     }
-
-//    private static Business_Account BusinessFromHash(Map<String,Object> map){
-//
-//
-//        String email = (String) map.get("email");
-//        String companyName = (String) map.get("companyName");
-//        String aboutMe = (String) map.get("aboutMe");
-//        String address = (String) map.get("address");
-//        String firstName = (String) map.get("firstName");
-//        String lastName = (String) map.get("lastName");
-//        String passWord = (String) map.get("passWord");
-//        String phoneNumber = (String) map.get("phoneNumber");
-//        Boolean loggedIn = (Boolean) map.get("loggedIn");
-//        List<post> activePosts = (List<post>) map.get("activePosts");
-//        List<post> historyPosts = (List<post>) map.get("historyPosts");
-//
-//        Business_Account business_account = new Business_Account( companyName,aboutMe,address,email,
-//                firstName,lastName,passWord,phoneNumber);
-//        business_account.setLoggedIn(loggedIn);
-//        business_account.setActivePosts(activePosts);
-//        business_account.setHistoryPosts(historyPosts);
-//
-//        return business_account;
-//    }
 }

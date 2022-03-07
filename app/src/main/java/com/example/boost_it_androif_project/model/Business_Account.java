@@ -27,7 +27,6 @@ public class Business_Account{
     private String passWord;
     private String phoneNumber;
     private Boolean loggedIn;
-    private List<post> activePosts;
 
     @Ignore
     public Business_Account(String companyName, String aboutMe, String address, String email, String firstName, String lastName,String passWord,
@@ -41,7 +40,6 @@ public class Business_Account{
         this.lastName = lastName;
         this.passWord = passWord;
         this.phoneNumber = phoneNumber;
-        this.activePosts = new ArrayList<>();
         this.loggedIn = false;
     }
 
@@ -55,7 +53,6 @@ public class Business_Account{
         this.passWord = null;
         this.phoneNumber = null;
         this.loggedIn = false;
-        this.activePosts = new ArrayList<>();
     }
 
     public String getCompanyName() { return companyName; }
@@ -122,14 +119,6 @@ public class Business_Account{
         this.loggedIn = loggedIn;
     }
 
-    public List<post> getActivePosts() {
-        return activePosts;
-    }
-
-    public void setActivePosts(List<post> activePosts) {
-        this.activePosts = activePosts;
-    }
-
     public Map<String, Object> toJson(Business_Account business_account) {
 
         Map<String, Object> businessJson = new HashMap<>();
@@ -143,7 +132,6 @@ public class Business_Account{
         businessJson.put("passWord", business_account.passWord);
         businessJson.put("phoneNumber", business_account.phoneNumber);
         businessJson.put("loggedIn", business_account.loggedIn);
-        businessJson.put("activePosts", business_account.activePosts);
 
         return businessJson;
     }
@@ -162,15 +150,22 @@ public class Business_Account{
         String passWord = (String) json.get("passWord");
         String phoneNumber = (String) json.get("phoneNumber");
         Boolean loggedIn = (Boolean) json.get("loggedIn");
-        List<post> activePosts = (List<post>) json.get("activePosts");
-
 
         Business_Account business_account = new Business_Account(companyName,aboutMe,address,email,firstName,
                 lastName,passWord, phoneNumber);
 
         business_account.loggedIn = loggedIn;
-        business_account.activePosts = activePosts;
 
         return business_account;
+    }
+
+        private static List<post> postsFromJson(List<Map<String,Object>> map){
+
+        List<post> posts = new ArrayList<>();
+
+        for (Map<String,Object> m:map)
+            posts.add(post.postfromJson(m));
+
+        return posts;
     }
 }

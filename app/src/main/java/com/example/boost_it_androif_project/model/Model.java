@@ -17,6 +17,7 @@ import androidx.room.Query;
 import com.example.boost_it_androif_project.MainActivity;
 import com.example.boost_it_androif_project.MyApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -34,7 +35,6 @@ public class Model {
     private Model(){
         postsIsLoaded.setValue(allPostListLoadingState.loaded);
     }
-
 
     public interface saveImageListener{
         void onComplete(String url);
@@ -90,6 +90,15 @@ public class Model {
             listener.onComplete();
         });
     }
+    public interface deletePostListener{
+        void onComplete();
+    }
+    public void deletePost(post post, deletePostListener listener){
+        fireBase.deletePost(post, ()->{
+            refreshAllPosts();
+            listener.onComplete();
+        });
+    }
 
     public interface getPostByIdListener{
         void onComplete(post post);
@@ -107,7 +116,6 @@ public class Model {
 
         return allPosts;
     }
-
 
     public void refreshAllPosts() {
         postsIsLoaded.setValue(allPostListLoadingState.loading);
@@ -134,4 +142,6 @@ public class Model {
             });
         });
     }
+
+
 }

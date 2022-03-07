@@ -35,10 +35,9 @@ public class business_active_posts extends Fragment {
     SwipeRefreshLayout swipeRefresh;
 
 
-    //TODO only show ads that were posted by specific business
-    //TODO add edit + delete for posts -> added todo on postDetails edit page
+    //TODO only show ads that were posted by current business
+    //TODO add edit -> added todo on postDetails edit page
     //TODO fix observer refresh when posting new add
-    //TODO fix gallery button not inserting picture
     //TODO add spinners when data is loading
 
     public static business_active_posts newInstance() {

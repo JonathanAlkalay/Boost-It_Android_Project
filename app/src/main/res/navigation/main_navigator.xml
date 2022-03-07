@@ -105,6 +105,9 @@
             android:id="@+id/action_business_account_info_to_business_account_info_editScreen"
             app:destination="@id/business_account_info_editScreen"
             app:popUpTo="@id/business_home_page" />
+        <argument
+            android:name="isBusiness"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/user_account_info"
@@ -214,7 +217,10 @@
         <action
             android:id="@+id/action_post_details_to_post_details_edit"
             app:destination="@id/post_details_edit"
-            app:popUpTo="@id/user_available_ads" />
+            app:popUpTo="@id/business_active_posts" />
+        <action
+            android:id="@+id/action_post_details_to_business_account_info"
+            app:destination="@id/business_account_info" />
     </fragment>
     <fragment
         android:id="@+id/post_details_edit"

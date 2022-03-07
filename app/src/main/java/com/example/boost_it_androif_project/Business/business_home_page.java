@@ -33,7 +33,7 @@ public class business_home_page extends Fragment {
         Button info = view.findViewById(R.id.business_home_page_Business_Info_button2);
         info.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(business_home_pageDirections.actionBusinessHomePageToBusinessAccountInfo
-                    (business_home_pageArgs.fromBundle(getArguments()).getBusinessAccountEmail()));
+                    (business_home_pageArgs.fromBundle(getArguments()).getBusinessAccountEmail(),true));
         });
 
 

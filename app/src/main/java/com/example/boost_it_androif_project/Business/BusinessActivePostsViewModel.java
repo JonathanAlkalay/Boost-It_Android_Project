@@ -11,7 +11,6 @@ import java.util.List;
 public class BusinessActivePostsViewModel extends ViewModel {
 
     LiveData<List<post>> data;
-
     public BusinessActivePostsViewModel(){
         data = Model.instance.getAllPosts();
     }

@@ -47,6 +47,9 @@ public class business_account_info extends Fragment {
 
 
         Button bttn = view.findViewById(R.id.business_account_info_editButton);
+        if (!business_account_infoArgs.fromBundle(getArguments()).getIsBusiness()){
+            bttn.setVisibility(View.INVISIBLE);
+        }
         bttn.setOnClickListener(v -> {
             String email, name, lastNanme,companyName,address, passWord, number, aboutMe;
 
@@ -77,7 +80,15 @@ public class business_account_info extends Fragment {
 
     private void setScreen(){
         Business_Account account = mViewModel.getUser();
+        TextView passWord = view.findViewById(R.id.business_account_info_password_text);
 
+        if (business_account_infoArgs.fromBundle(getArguments()).getIsBusiness()){
+            Button edit = view.findViewById(R.id.business_account_info_editButton);
+            edit.setVisibility(View.VISIBLE);
+
+            passWord.setVisibility(View.VISIBLE);
+
+        }
 
         TextView name = view.findViewById(R.id.business_account_info_name_text);
         TextView lastName = view.findViewById(R.id.business_account_info_lastName_text);
@@ -85,7 +96,6 @@ public class business_account_info extends Fragment {
         TextView phoneNum = view.findViewById(R.id.business_account_info_phoneNumber_text);
         TextView address = view.findViewById(R.id.business_account_info_address_text);
         TextView email = view.findViewById(R.id.business_account_info_email_text);
-        TextView passWord = view.findViewById(R.id.business_account_info_password_text);
         TextView description = view.findViewById(R.id.business_account_info_description_text);
 
         name.setText(account.getFirstName());

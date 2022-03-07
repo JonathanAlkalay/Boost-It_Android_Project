@@ -56,6 +56,7 @@ public class post_details extends Fragment {
     private void setScreen() {
 
         Button confirm = view.findViewById(R.id.post_details_confirmBttn);
+        Button businessDETAILS = view.findViewById(R.id.post_details_business_button);
         TextView companyName = view.findViewById(R.id.post_details_businessName);
         TextView title = view.findViewById(R.id.post_details_title);
         TextView hours = view.findViewById(R.id.post_details_hours);
@@ -65,8 +66,11 @@ public class post_details extends Fragment {
 
         if (post_detailsArgs.fromBundle(getArguments()).getIsBusiness()){
             confirm.setVisibility(View.VISIBLE);
+            businessDETAILS.setVisibility(View.INVISIBLE);
+
         }else {
             confirm.setVisibility(View.INVISIBLE);
+            businessDETAILS.setVisibility(View.VISIBLE);
         }
 
         image.setImageResource(R.drawable.ic_launcher_foreground);
@@ -82,12 +86,11 @@ public class post_details extends Fragment {
         price.setText(mViewModel.getPost().getPrice());
         description.setText(mViewModel.getPost().getDescription());
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(post_detailsDirections.actionPostDetailsToPostDetailsEdit(mViewModel.getPost().getKey()));
-            }
-        });
+        confirm.setOnClickListener(v ->
+                Navigation.findNavController(v).navigate(post_detailsDirections.actionPostDetailsToPostDetailsEdit(mViewModel.getPost().getKey())));
+
+        businessDETAILS.setOnClickListener(v ->
+                Navigation.findNavController(v).navigate(post_detailsDirections.actionPostDetailsToBusinessAccountInfo(mViewModel.getPost().getBusinessEmail(),false)));
     }
 
     @Override

@@ -115,8 +115,6 @@ public class business_post_new_add extends Fragment {
                 Model.instance.saveImage(imageBitmap,post.getKey()+".jpg", url -> {
                     post.setImage(url);
 
-                    mViewModel.getAccount().getActivePosts().add(post);
-                    Model.instance.UpdateBusiness(mViewModel.getAccount().getEmail(),"activePosts", mViewModel.getAccount().getActivePosts());
                     Model.instance.addPost(post, () -> Navigation.findNavController(view).navigateUp());
                 });
 
@@ -154,7 +152,7 @@ public class business_post_new_add extends Fragment {
             }
         } else if (requestCode == REQUEST_IMAGE_GALLERY){
 
-                if (requestCode == Activity.RESULT_OK){
+                if (resultCode == Activity.RESULT_OK){
                     try {
                         final Uri imageUri = data.getData();
                         final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
