@@ -183,11 +183,31 @@ public class ModelFireBase {
                             }
                         }
                     }
-//                    for (post p:list){
-//                        if (p.getDeleted())
-//                            list.remove(p);
-//                    }
+                    listener.onComplete(list);
+                });
+    }
 
+    public interface getAllPostsOfBusinessListener{
+        void onComplete(List<post> list);
+    }
+    public void getAllPostsOfBusiness(Long lastUpdateDate,String email ,getAllPostsOfBusinessListener listener) {
+        db.collection(post.collectionName)
+                .whereGreaterThanOrEqualTo("updateDate", new Timestamp(lastUpdateDate, 0))
+                .get()
+                .addOnCompleteListener(task -> {
+                    List<post> list = new ArrayList<>();
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            post post1 = post.postfromJson(doc.getData());
+                            if (post1 != null) {
+                                list.add(post1);
+                            }
+                        }
+                    }
+                    for (post p:list){
+                        if (!p.getBusinessEmail().equals(email))
+                            list.remove(p);
+                    }
                     listener.onComplete(list);
                 });
     }

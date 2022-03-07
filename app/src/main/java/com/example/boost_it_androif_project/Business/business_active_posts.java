@@ -34,7 +34,6 @@ public class business_active_posts extends Fragment {
     MyAdapter adapter;
     SwipeRefreshLayout swipeRefresh;
 
-
     //TODO only show ads that were posted by current business
 
     public static business_active_posts newInstance() {

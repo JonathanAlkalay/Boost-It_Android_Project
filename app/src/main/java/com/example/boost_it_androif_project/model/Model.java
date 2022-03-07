@@ -32,8 +32,12 @@ public class Model {
     MutableLiveData<allPostListLoadingState> postsIsLoaded = new MutableLiveData<allPostListLoadingState>();
     public LiveData<allPostListLoadingState> getPostsIsLoaded(){ return postsIsLoaded;}
 
+    MutableLiveData<allPostListLoadingState> businessPostsIsLoaded = new MutableLiveData<allPostListLoadingState>();
+    public LiveData<allPostListLoadingState> getBusinessPostssIsLoaded(){ return businessPostsIsLoaded;}
+
     private Model(){
         postsIsLoaded.setValue(allPostListLoadingState.loaded);
+        businessPostsIsLoaded.setValue(allPostListLoadingState.loaded);
     }
 
     public interface saveImageListener{
@@ -152,5 +156,38 @@ public class Model {
         });
     }
 
+    MutableLiveData<List<post>> allBusinessPosts = new MutableLiveData<List<post>>();
+    public LiveData<List<post>> getAllBusinessPosts(String email){
 
+        if (allBusinessPosts.getValue() == null)
+            refreshAllBusinessPosts(email);
+
+        return allBusinessPosts;
+    }
+
+    public void refreshAllBusinessPosts(String email){
+        businessPostsIsLoaded.setValue(allPostListLoadingState.loading);
+
+        long lastUpdateDate = MyApplication.getContext().getSharedPreferences("TAG", Context.MODE_PRIVATE)
+                .getLong("PostsLastUpdateDate",0);
+
+        fireBase.getAllPostsOfBusiness(lastUpdateDate,email, list -> {
+            threadPool.execute(()->{
+                Long lud = new Long(0);
+
+                for (post pst: list) {
+                    AppLocalDB.db.post_dao().insert(pst);
+                    if (lud < pst.getUpDateDate())
+                        lud = pst.getUpDateDate();
+                }
+                MyApplication.getContext()
+                        .getSharedPreferences("TAG",Context.MODE_PRIVATE)
+                        .edit().putLong("PostsLastUpdateDate",lud).commit();
+
+                List<post> pstLst = AppLocalDB.db.post_dao().getAll();
+                allBusinessPosts.postValue(pstLst);
+                businessPostsIsLoaded.postValue(allPostListLoadingState.loaded);
+            });
+        });
+    }
 }
